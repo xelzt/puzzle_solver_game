@@ -7,7 +7,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float _speed = 5;
     [SerializeField] private float _turnSpeed = 360;
     private Vector3 _input;
-    private bool onTheGround = true;
+    private Animator animator;
+    private bool onTheGround = false;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update() {
         GatherInput();
@@ -17,6 +23,8 @@ public class PlayerController : MonoBehaviour {
             _rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
             onTheGround = false;
         }
+
+        HandleAnimation();
     }
 
     private void FixedUpdate() {
@@ -42,10 +50,34 @@ public class PlayerController : MonoBehaviour {
     {
         var matrix = Matrix4x4.Rotate(Quaternion.Euler(0,45,0));
         var skewedInput = matrix.MultiplyPoint3x4(_input);
-
         var relative = (transform.position + skewedInput) - transform.position;
         var rot = Quaternion.LookRotation(relative, Vector3.up);
+        transform.rotation = rot;   
+    }
 
-        transform.rotation = rot;
+     private void HandleAnimation()
+    {
+        if(onTheGround == false)
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Move", false);
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+        }
+
+        if(_input != Vector3.zero && onTheGround == true)
+        {
+            animator.SetBool("Move", true); 
+            animator.SetBool("Idle", false);
+        }
+        
+        if(_input == Vector3.zero && onTheGround == true)
+        {
+            animator.SetBool("Move", false);
+            animator.SetBool("Idle", true);
+        }
     }
 }
