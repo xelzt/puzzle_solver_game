@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-sample_level/[Ll]ibrary/
-sample_level/[Tt]emp/
-sample_level/[Oo]bj/
-sample_level/[Bb]uild/
-sample_level/[Bb]uilds/
-sample_level/[Ll]ogs/
-sample_level/[Mm]emoryCaptures/
+puzzle_solver_game/[Ll]ibrary/
+puzzle_solver_game/[Tt]emp/
+puzzle_solver_game/[Oo]bj/
+puzzle_solver_game/[Bb]uild/
+puzzle_solver_game/[Bb]uilds/
+puzzle_solver_game/[Ll]ogs/
+puzzle_solver_game/[Mm]emoryCaptures/
 
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
