@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - FlyingBox
   - Ground
   layers:
   - Default
@@ -13,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Star
-  - 
+  - Grabable
   - 
   - 
   - 
@@ -39,6 +40,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
+  - name: FlyingBox
     uniqueID: 0
     locked: 0
