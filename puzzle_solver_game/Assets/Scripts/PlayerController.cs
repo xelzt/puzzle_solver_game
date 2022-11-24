@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     [SerializeField] private Rigidbody _rb;
     private float _speed = 5;
-    private float _turnSpeed = 360;
+    private float _turnSpeed = 1200;
     private float Fallmultiplier = 2.5f;
     private Vector3 _input;
     private Animator animator;
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
     {
         if(Input.GetButtonDown("Jump") && onTheGround)
         {
-            _rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
+            _rb.AddForce(new Vector3(0, 6, 0), ForceMode.Impulse);
             onTheGround = false;
         }
     }
