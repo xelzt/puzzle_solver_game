@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
+  - FlyingBox
   layers:
   - Default
   - TransparentFX
@@ -39,6 +39,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
+  - name: FlyingBox
     uniqueID: 0
     locked: 0
