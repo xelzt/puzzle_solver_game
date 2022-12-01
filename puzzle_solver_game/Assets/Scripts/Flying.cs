@@ -6,10 +6,11 @@ using UnityEngine;
 public class Flying : MonoBehaviour
 
 {
-public static bool Action2 = false;
+    string string1 = "FlyingBox";
+    public static bool Action2 = false;
       public void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "FlyingBox")
+        if (collision.gameObject.tag == string1)
         {
          Action2 = true;
         }
