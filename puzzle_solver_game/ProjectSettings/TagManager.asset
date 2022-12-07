@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FlyingBox
   - Ground
+  - FlyingBox2
   layers:
   - Default
   - TransparentFX
