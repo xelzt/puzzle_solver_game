@@ -22,7 +22,7 @@ public class Room4Trig1 : MonoBehaviour
 void Update()
     {
 
-        {if (Trig1==true && Room4Trig2.Trig2==true && NeedBool ){
+        {if (Trig1==true && Room4Trig2.Trig2==true && Trig1 ){
                 DropIt.GetComponent<Animation>().Play("DropBoxRoom4"); 
                 NeedBool = false;    
             }}
