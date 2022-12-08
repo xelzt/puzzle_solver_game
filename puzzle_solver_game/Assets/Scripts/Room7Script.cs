@@ -6,6 +6,7 @@ using System.Threading;
 
 public class Room7Script : MonoBehaviour
 {
+    public GameObject Doors;
     public GameObject Platform;
     public bool Solved;
     public static int[] Array = new int[]{0,0,0,0};
@@ -36,9 +37,11 @@ public class Room7Script : MonoBehaviour
    
     if(Solved == true && o == 0){
     Platform.GetComponent<Animation> ().Play ("Room7Platform");
+    Doors.GetComponent<Animation> ().Play ("DoorsOpen");
     o = 1;
     }else if(Solved == false && o == 1){
         Platform.GetComponent<Animation> ().Play ("Room7PlatformB");
+        Doors.GetComponent<Animation> ().Play ("DoorsClose");
         o = 0; 
     }
 
