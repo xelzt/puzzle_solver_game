@@ -6,10 +6,6 @@ TagManager:
   tags:
   - FlyingBox
   - Ground
-  - FlyingBox2
-  - R8B2
-  - R8B1
-  - R8B3
   layers:
   - Default
   - TransparentFX
