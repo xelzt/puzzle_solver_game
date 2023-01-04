@@ -9,7 +9,6 @@ public class Lamp1 : MonoBehaviour
     public GameObject Light1;
     public GameObject Light2;
     public GameObject Light4;
-
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
