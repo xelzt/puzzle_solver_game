@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SceneMainMenu.unity
+    guid: c09f4b0b2a9226946aa44a3dd8ffdfa6
+  - enabled: 1
+    path: Assets/Scenes/SceneDungeonLevel.unity
+    guid: 07c755cd215d6054e8214c2d48959f6b
+  - enabled: 1
+    path: Assets/Scenes/SceneLockDigit.unity
+    guid: 13393fde5f93e4f41a65161a3f3b837a
+  - enabled: 1
+    path: Assets/Scenes/SceneLockPick.unity
+    guid: 02069ccdc10fc19468f91fb8ed05432f
   m_configObjects: {}
