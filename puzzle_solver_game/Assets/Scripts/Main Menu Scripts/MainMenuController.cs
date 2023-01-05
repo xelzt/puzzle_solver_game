@@ -21,12 +21,11 @@ public class MainMenuController : MonoBehaviour
     public void loadFirstLvl()
     {
         SceneManager.LoadScene("SceneDungeonLevel");
-        SceneManager.UnloadSceneAsync("SceneMainMenu");
     }
 
     public void loadSecondLvl()
     {
-        SceneManager.LoadScene("SceneSpaceLevel");
+        SceneManager.LoadScene("SceneSpaceShipLevel");
     }
     public void Quit()
     {
