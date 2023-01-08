@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room1Lamp4 : MonoBehaviour
+public class Room1Lamp2 : MonoBehaviour
 {
     public bool Action;
-    public static bool L4IsRed = true;
-    public static bool L4IsBlue = false;
-    public static bool L4IsGreen = false;
+    public static bool L2IsGreen = false;
+    public static bool L2IsRed = true;
+    public static bool L2IsBlue = false;
     public GameObject Light1;
-    public GameObject Light4;
+    public GameObject Light2;
+    public GameObject Light3;
     public GameObject Light5;
-    public GameObject Light7;
 
     void OnTriggerEnter(Collider collision)
     {
@@ -39,19 +39,19 @@ public class Room1Lamp4 : MonoBehaviour
                 else{Room1Lamp1.L1IsGreen=false;Room1Lamp1.L1IsRed=true;
                 Light1.GetComponent<Animation>().Play("LightChangeGreenRed");}
 
-                if(L4IsRed == true){L4IsRed=false;L4IsBlue=true;
-                Light4.GetComponent<Animation>().Play("LightChangeRedBlue");}
-                else if(L4IsBlue == true){L4IsBlue=false;L4IsGreen=true;
-                Light4.GetComponent<Animation>().Play("LightChangeBlueGreen");}
-                else{L4IsGreen=false;L4IsRed=true;
-                Light4.GetComponent<Animation>().Play("LightChangeGreenRed");}
+                if(L2IsRed == true){L2IsRed=false;L2IsBlue=true;
+                Light2.GetComponent<Animation>().Play("LightChangeRedBlue");}
+                else if(L2IsBlue == true){L2IsBlue=false;L2IsGreen=true;
+                Light2.GetComponent<Animation>().Play("LightChangeBlueGreen");}
+                else{L2IsGreen=false;L2IsRed=true;
+                Light2.GetComponent<Animation>().Play("LightChangeGreenRed");}
 
-                if(Room1Lamp7.L7IsRed == true){Room1Lamp7.L7IsRed=false;Room1Lamp7.L7IsBlue=true;
-                Light7.GetComponent<Animation>().Play("LightChangeRedBlue");}
-                else if(Room1Lamp7.L7IsBlue == true){Room1Lamp7.L7IsBlue=false;Room1Lamp7.L7IsGreen=true;
-                Light7.GetComponent<Animation>().Play("LightChangeBlueGreen");}
-                else{Room1Lamp7.L7IsGreen=false;Room1Lamp7.L7IsRed=true;
-                Light7.GetComponent<Animation>().Play("LightChangeGreenRed");}
+                if(Room1Lamp3.L3IsRed == true){Room1Lamp3.L3IsRed=false;Room1Lamp3.L3IsBlue=true;
+                Light3.GetComponent<Animation>().Play("LightChangeRedBlue");}
+                else if(Room1Lamp3.L3IsBlue == true){Room1Lamp3.L3IsBlue=false;Room1Lamp3.L3IsGreen=true;
+                Light3.GetComponent<Animation>().Play("LightChangeBlueGreen");}
+                else{Room1Lamp3.L3IsGreen=false;Room1Lamp3.L3IsRed=true;
+                Light3.GetComponent<Animation>().Play("LightChangeGreenRed");}
 
                 if(Room1Lamp5.L5IsRed == true){Room1Lamp5.L5IsRed=false;Room1Lamp5.L5IsBlue=true;
                 Light5.GetComponent<Animation>().Play("LightChangeRedBlue");}

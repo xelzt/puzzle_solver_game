@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room1Lamp8 : MonoBehaviour
+public class Room1Lamp4 : MonoBehaviour
 {
     public bool Action;
-    public static bool L8IsRed = true;
-    public static bool L8IsBlue = false;
-    public static bool L8IsGreen = false;
+    //public static bool L4IsRed = true;
+   // public static bool L4IsBlue = false;
+    public static bool L4IsGreen = false;
+    public static bool L4IsRed = true;
+    public static bool L4IsBlue = false;
+    //public static bool L4IsGreen = true;
+    public GameObject Light1;
+    public GameObject Light4;
     public GameObject Light5;
     public GameObject Light7;
-    public GameObject Light8;
-    public GameObject Light9;
-
 
     void OnTriggerEnter(Collider collision)
     {
@@ -33,13 +35,19 @@ public class Room1Lamp8 : MonoBehaviour
         {
             if (Action==true)
             {
+                if(Room1Lamp1.L1IsRed == true){Room1Lamp1.L1IsRed=false;Room1Lamp1.L1IsBlue=true;
+                Light1.GetComponent<Animation>().Play("LightChangeRedBlue");}
+                else if(Room1Lamp1.L1IsBlue == true){Room1Lamp1.L1IsBlue=false;Room1Lamp1.L1IsGreen=true;
+                Light1.GetComponent<Animation>().Play("LightChangeBlueGreen");}
+                else{Room1Lamp1.L1IsGreen=false;Room1Lamp1.L1IsRed=true;
+                Light1.GetComponent<Animation>().Play("LightChangeGreenRed");}
 
-                if(L8IsRed == true){L8IsRed=false;L8IsBlue=true;
-                Light8.GetComponent<Animation>().Play("LightChangeRedBlue");}
-                else if(L8IsBlue == true){L8IsBlue=false;L8IsGreen=true;
-                Light8.GetComponent<Animation>().Play("LightChangeBlueGreen");}
-                else{L8IsGreen=false;L8IsRed=true;
-                Light8.GetComponent<Animation>().Play("LightChangeGreenRed");}
+                if(L4IsRed == true){L4IsRed=false;L4IsBlue=true;
+                Light4.GetComponent<Animation>().Play("LightChangeRedBlue");}
+                else if(L4IsBlue == true){L4IsBlue=false;L4IsGreen=true;
+                Light4.GetComponent<Animation>().Play("LightChangeBlueGreen");}
+                else{L4IsGreen=false;L4IsRed=true;
+                Light4.GetComponent<Animation>().Play("LightChangeGreenRed");}
 
                 if(Room1Lamp7.L7IsRed == true){Room1Lamp7.L7IsRed=false;Room1Lamp7.L7IsBlue=true;
                 Light7.GetComponent<Animation>().Play("LightChangeRedBlue");}
@@ -54,13 +62,6 @@ public class Room1Lamp8 : MonoBehaviour
                 Light5.GetComponent<Animation>().Play("LightChangeBlueGreen");}
                 else{Room1Lamp5.L5IsGreen=false;Room1Lamp5.L5IsRed=true;
                 Light5.GetComponent<Animation>().Play("LightChangeGreenRed");}
-               
-                if(Room1Lamp9.L9IsRed == true){Room1Lamp9.L9IsRed=false;Room1Lamp9.L9IsBlue=true;
-                Light9.GetComponent<Animation>().Play("LightChangeRedBlue");}
-                else if(Room1Lamp9.L9IsBlue == true){Room1Lamp9.L9IsBlue=false;Room1Lamp9.L9IsGreen=true;
-                Light9.GetComponent<Animation>().Play("LightChangeBlueGreen");}
-                else{Room1Lamp9.L9IsGreen=false;Room1Lamp9.L9IsRed=true;
-                Light9.GetComponent<Animation>().Play("LightChangeGreenRed");}
 
             }
         }

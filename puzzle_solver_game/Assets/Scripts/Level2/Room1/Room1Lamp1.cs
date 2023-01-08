@@ -5,9 +5,9 @@ using UnityEngine;
 public class Room1Lamp1 : MonoBehaviour
 {
     public bool Action;
-    public static bool L1IsRed = true;
     public static bool L1IsBlue = false;
     public static bool L1IsGreen = false;
+    public static bool L1IsRed = true;
     public GameObject Light1;
     public GameObject Light2;
     public GameObject Light4;
