@@ -11,19 +11,21 @@ public class LockElex : MonoBehaviour
 
     [SerializeField]
     private Image[] characters;
-
     private string codeToBreak;
     private string codeSequence;
     private List<string> symbols = new List<string>();
-    private int[] numbers = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    public int maxTries = 1;
+    private int[] numbers = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private string[] mathSymbols = new[] { "<", ">", "=" };
 
     void Start()
     {
-        codeToBreak = GenerateRandomPassword();
-        dispayMathSymbols(symbols);
-        codeSequence = "";
+        PlayerPrefs.SetInt("DidSimonSays", 1);
+        PlayerPrefs.Save();
+        setNumbersDependsOnPlayerPrefs();
+        GenerateRandomPassword();
         ResetDisplay();
+        codeSequence = "";
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
     }
 
@@ -103,41 +105,41 @@ public class LockElex : MonoBehaviour
             case 1:
                 characters[0].sprite = digits[digitJustEntered];
                 characters[2].sprite = digits[10];
-                characters[4].sprite = digits[10];
-                characters[6].sprite = digits[10];
+                characters[4].sprite = digits[11];
+                characters[6].sprite = digits[11];
                 break;
             case 2:
-                characters[0].sprite = digits[digitJustEntered];
-                characters[2].sprite = characters[6].sprite;
+                characters[0].sprite = characters[0].sprite;
+                characters[2].sprite = digits[digitJustEntered];
                 characters[4].sprite = digits[10];
-                characters[6].sprite = digits[10];
+                characters[6].sprite = digits[11];
                 break;
             case 3:
-                characters[0].sprite = digits[digitJustEntered];
-                characters[2].sprite = characters[6].sprite;
-                characters[4].sprite = characters[4].sprite;
+                characters[0].sprite = characters[0].sprite;
+                characters[2].sprite = characters[2].sprite;
+                characters[4].sprite = digits[digitJustEntered];
                 characters[6].sprite = digits[10];
                 break;
             case 4:
-                characters[0].sprite = digits[digitJustEntered];
-                characters[2].sprite = characters[6].sprite;
+                characters[0].sprite = characters[0].sprite;
+                characters[2].sprite = characters[2].sprite;
                 characters[4].sprite = characters[4].sprite;
-                characters[6].sprite = characters[2].sprite;
+                characters[6].sprite = digits[digitJustEntered];
                 break;
 
         }
     }
-    private void dispayMathSymbols(List<string> symbols)
+    private void dispayMathSymbols()
     {
         int idx = 1;
         for (int i = 0; i < 3; i++)
         {
-            if (symbols[i] == "<")
-                characters[idx].sprite = digits[11]; //do doprecyzowania symbol <
-            else if (symbols[i] == "=")
-                characters[idx].sprite = digits[12]; //do doprecyzowania symbol =
+            if (symbols[i] == "=")
+                characters[idx].sprite = digits[12]; //do doprecyzowania symbol <
+            else if (symbols[i] == ">")
+                characters[idx].sprite = digits[13]; //do doprecyzowania symbol =
             else
-                characters[idx].sprite = digits[13]; //do doprecyzowania symbol >
+                characters[idx].sprite = digits[14]; //do doprecyzowania symbol >
             idx = idx + 2;
         }
     }
@@ -151,29 +153,40 @@ public class LockElex : MonoBehaviour
         else
         {
             Debug.Log("Wrong!");
+            maxTries = maxTries - 1;
             ResetDisplay();
         }
     }
 
     private void ResetDisplay()
     {
-        codeSequence = GenerateRandomPassword();
-        for (int i = 0; i <= characters.Length - 1; i++)
+        if (maxTries == 0)
         {
-            characters[i].sprite = digits[10];
+            GenerateRandomPassword();
+        }
+        codeSequence = "";
+        for (int i = 0; i <= characters.Length - 1; i = i + 2)
+        {
+            if (i == 0)
+            {
+                characters[i].sprite = digits[10];
+            }
+            else characters[i].sprite = digits[11];
         }
     }
-    public List<string> generateSymbols()
+    public void generateSymbols()
     {
+        symbols.Clear();
         for (int i = 0; i < 3; i++)
         {
             symbols.Add(mathSymbols[UnityEngine.Random.Range(0, mathSymbols.Length)]);
         }
-        return symbols;
     }
-    public string GenerateRandomPassword()
+    public void GenerateRandomPassword()
     {
-        List<string> symbols = generateSymbols();
+        generateSymbols();
+        dispayMathSymbols();
+        setMaxTriesDependsOnPlayerPrefs();
         int x1 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         int x2 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         int x3 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
@@ -187,9 +200,31 @@ public class LockElex : MonoBehaviour
             x4 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         }
         codeToBreak = x1.ToString() + x2.ToString() + x3.ToString() + x4.ToString();
-        return codeToBreak;
+        Debug.Log("codeToBreak: " + codeToBreak);
     }
-
+    private void setMaxTriesDependsOnPlayerPrefs()
+    {
+        if (PlayerPrefs.GetInt("DidSimonSays", 1) == 1)
+        {
+            maxTries = 4;
+        }
+        else maxTries = 1;
+        Debug.Log("maxTries: " + maxTries);
+    }
+    private void setNumbersDependsOnPlayerPrefs()
+    {
+        if (PlayerPrefs.GetInt("DidSimonSays", 1) == 1)
+        {
+            var random = new System.Random();
+            for (int i = 0; i < 2; i++)
+            {
+                List<int> numbersList = new List<int>(numbers);
+                int index1 = random.Next(numbersList.Count);
+                numbersList.RemoveAt(index1);
+                numbers = numbersList.ToArray();
+            }
+        }
+    }
     private bool IsValidExpression(int x1, int x2, int x3, int x4, List<string> symbols)
     {
         bool firstFlag;
