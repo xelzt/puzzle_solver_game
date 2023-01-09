@@ -44,12 +44,10 @@ public class LockSimonSays : MonoBehaviour
         buttonsclicked++;
         if (button == lightOrder[buttonsclicked - 1])
         {
-            Debug.Log("pass");
             passed = true;
         }
         else
         {
-            Debug.Log("failed");
             won = false;
             passed = false;
             StartCoroutine(ColorBlink(red));
@@ -62,7 +60,6 @@ public class LockSimonSays : MonoBehaviour
         }
         if (buttonsclicked == level && passed == true && buttonsclicked == 5)
         {
-            Debug.Log("failed");
             won = true;
             StartCoroutine(ColorBlink(green));
         }
@@ -80,7 +77,6 @@ public class LockSimonSays : MonoBehaviour
         DisableInteractableButtons();
         for (int j = 0; j < 3; j++)
         {
-            Debug.Log("I run this many times" + j);
             for (int i = 0; i < buttons.Length; i++)
             {
                 buttons[i].GetComponent<Image>().color = colorToBlink;
@@ -100,11 +96,6 @@ public class LockSimonSays : MonoBehaviour
             }
             yield return new WaitForSeconds(.5f);
         }
-        if (won == true)
-        {
-            Debug.Log("put won stuff here");
-            ClosePanel();
-        }
         EnableInteractableButtons();
         OnEnable();
     }
@@ -117,7 +108,6 @@ public class LockSimonSays : MonoBehaviour
         {
             if (level >= colorOrderRunCount)
             {
-                //Debug.Log(lightOrder[0]);
                 lightArray[lightOrder[i]].GetComponent<Image>().color = invisible;
                 yield return new WaitForSeconds(lightspeed);
                 lightArray[lightOrder[i]].GetComponent<Image>().color = green;
