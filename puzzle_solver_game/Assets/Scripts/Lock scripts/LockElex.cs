@@ -11,6 +11,10 @@ public class LockElex : MonoBehaviour
 
     [SerializeField]
     private Image[] characters;
+
+    [SerializeField]
+    GameObject canvasPanel;
+
     private string codeToBreak;
     private string codeSequence;
     private List<string> symbols = new List<string>();
@@ -21,14 +25,19 @@ public class LockElex : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("DidSimonSays", 1);
-        PlayerPrefs.Save();
         setNumbersDependsOnPlayerPrefs();
         GenerateRandomPassword();
         displayTriesLeft();
         ResetDisplay();
         codeSequence = "";
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            canvasPanel.SetActive(false);
+        }
     }
     private void displayTriesLeft()
     {
@@ -155,6 +164,9 @@ public class LockElex : MonoBehaviour
         if (codeSequence == codeToBreak)
         {
             Debug.Log("Correct!");
+            PlayerPrefs.SetInt("DidElexQuest", 1);
+            PlayerPrefs.Save();
+            canvasPanel.SetActive(false);
         }
         else
         {
@@ -212,7 +224,7 @@ public class LockElex : MonoBehaviour
     }
     private void setMaxTriesDependsOnPlayerPrefs()
     {
-        if (PlayerPrefs.GetInt("DidSimonSays", 1) == 1)
+        if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1)
         {
             maxTries = 4;
         }
@@ -221,7 +233,7 @@ public class LockElex : MonoBehaviour
     }
     private void setNumbersDependsOnPlayerPrefs()
     {
-        if (PlayerPrefs.GetInt("DidSimonSays", 1) == 1)
+        if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1)
         {
             var random = new System.Random();
             for (int i = 0; i < 2; i++)

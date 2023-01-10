@@ -10,6 +10,7 @@ public class LockSimonSays : MonoBehaviour
     [SerializeField] GameObject[] rowLights;
     [SerializeField] int[] lightOrder;
     [SerializeField] GameObject simonSaysGamePanel;
+    public Camera simonSaysGamePanelCam;
     int level = 0;
     int buttonsclicked = 0;
     int colorOrderRunCount = 0;
@@ -20,7 +21,13 @@ public class LockSimonSays : MonoBehaviour
     Color32 invisible = new Color32(4, 204, 0, 0);
     Color32 white = new Color32(255, 255, 255, 255);
     public float lightspeed;
-
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            simonSaysGamePanel.SetActive(false);
+        }
+    }
     private void OnEnable()
     {
         buttonsclicked = 0;
@@ -66,9 +73,11 @@ public class LockSimonSays : MonoBehaviour
         }
         if (buttonsclicked == level && passed == true && buttonsclicked == 5)
         {
-            PlayerPrefs.SetInt("DidSimonSays", 1);
+            PlayerPrefs.SetInt("DidSimonSaysQuest", 1);
             PlayerPrefs.Save();
             StartCoroutine(ColorBlink(green));
+            resetLEDs();
+            simonSaysGamePanel.SetActive(false);
         }
     }
     IEnumerator ColorBlink(Color32 colorToBlink)
@@ -84,7 +93,7 @@ public class LockSimonSays : MonoBehaviour
             {
                 rowLights[i].GetComponent<Image>().color = colorToBlink;
             }
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(lightspeed);
             for (int i = 0; i < lightArray.Length; i++)
             {
                 lightArray[i].GetComponent<Image>().color = black;
@@ -93,7 +102,7 @@ public class LockSimonSays : MonoBehaviour
             {
                 rowLights[i].GetComponent<Image>().color = white;
             }
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(lightspeed);
         }
         EnableInteractableButtons();
         OnEnable();
