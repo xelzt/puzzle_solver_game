@@ -27,9 +27,14 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("SceneSpaceShipLevel");
     }
+    public void loadMainMenu()
+    {
+        SceneManager.LoadScene("SceneMainMenu");
+    }
     public void Quit()
     {
         Debug.Log("quited");
+        PlayerPrefs.DeleteAll();
         Application.Quit();
     }
 }
