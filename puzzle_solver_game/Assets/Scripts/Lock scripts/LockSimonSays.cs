@@ -14,8 +14,8 @@ public class LockSimonSays : MonoBehaviour
     int buttonsclicked = 0;
     int colorOrderRunCount = 0;
     bool passed = false;
-    bool won = false;
     Color32 red = new Color32(255, 39, 0, 255);
+    Color32 black = new Color32(0, 0, 0, 255);
     Color32 green = new Color32(4, 204, 0, 255);
     Color32 invisible = new Color32(4, 204, 0, 0);
     Color32 white = new Color32(255, 255, 255, 255);
@@ -23,21 +23,28 @@ public class LockSimonSays : MonoBehaviour
 
     private void OnEnable()
     {
-        level = 0;
         buttonsclicked = 0;
         colorOrderRunCount = -1;
-        won = false;
+        level = 1;
+        generatePassword();
+        resetLEDs();
+        level = 1;
+        StartCoroutine(ColorOrder());
+    }
+    private void resetLEDs()
+    {
+        for (int i = 0; i < rowLights.Length; i++)
+        {
+            rowLights[i].GetComponent<Image>().color = white;
+        }
+    }
+    private void generatePassword()
+    {
         for (int i = 0; i < lightOrder.Length; i++)
         {
 
             lightOrder[i] = (UnityEngine.Random.Range(0, 8));
         }
-        for (int i = 0; i < rowLights.Length; i++)
-        {
-            rowLights[i].GetComponent<Image>().color = white;
-        }
-        level = 1;
-        StartCoroutine(ColorOrder());
     }
     public void ButtonClickOrder(int button)
     {
@@ -48,7 +55,6 @@ public class LockSimonSays : MonoBehaviour
         }
         else
         {
-            won = false;
             passed = false;
             StartCoroutine(ColorBlink(red));
         }
@@ -60,41 +66,34 @@ public class LockSimonSays : MonoBehaviour
         }
         if (buttonsclicked == level && passed == true && buttonsclicked == 5)
         {
-            won = true;
+            PlayerPrefs.SetInt("DidSimonSays", 1);
+            PlayerPrefs.Save();
             StartCoroutine(ColorBlink(green));
         }
-    }
-    public void ClosePanel()
-    {
-        simonSaysGamePanel.SetActive(false);
-    }
-    public void OpenPanel()
-    {
-        simonSaysGamePanel.SetActive(true);
     }
     IEnumerator ColorBlink(Color32 colorToBlink)
     {
         DisableInteractableButtons();
         for (int j = 0; j < 3; j++)
         {
-            for (int i = 0; i < buttons.Length; i++)
+            for (int i = 0; i < lightArray.Length; i++)
             {
-                buttons[i].GetComponent<Image>().color = colorToBlink;
+                lightArray[i].GetComponent<Image>().color = colorToBlink;
             }
             for (int i = 5; i < rowLights.Length; i++)
             {
                 rowLights[i].GetComponent<Image>().color = colorToBlink;
             }
             yield return new WaitForSeconds(.5f);
-            for (int i = 0; i < buttons.Length; i++)
+            for (int i = 0; i < lightArray.Length; i++)
             {
-                buttons[i].GetComponent<Image>().color = white;
+                lightArray[i].GetComponent<Image>().color = black;
             }
             for (int i = 5; i < rowLights.Length; i++)
             {
                 rowLights[i].GetComponent<Image>().color = white;
             }
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.3f);
         }
         EnableInteractableButtons();
         OnEnable();

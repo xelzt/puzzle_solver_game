@@ -15,6 +15,7 @@ public class LockElex : MonoBehaviour
     private string codeSequence;
     private List<string> symbols = new List<string>();
     public int maxTries = 1;
+    public Text text;
     private int[] numbers = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private string[] mathSymbols = new[] { "<", ">", "=" };
 
@@ -24,9 +25,14 @@ public class LockElex : MonoBehaviour
         PlayerPrefs.Save();
         setNumbersDependsOnPlayerPrefs();
         GenerateRandomPassword();
+        displayTriesLeft();
         ResetDisplay();
         codeSequence = "";
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
+    }
+    private void displayTriesLeft()
+    {
+        text.text = "Max tries left: " + maxTries;
     }
 
     private void AddDigitToCodeSequence(string digitEntered)
@@ -154,6 +160,7 @@ public class LockElex : MonoBehaviour
         {
             Debug.Log("Wrong!");
             maxTries = maxTries - 1;
+            displayTriesLeft();
             ResetDisplay();
         }
     }
@@ -163,6 +170,7 @@ public class LockElex : MonoBehaviour
         if (maxTries == 0)
         {
             GenerateRandomPassword();
+            displayTriesLeft();
         }
         codeSequence = "";
         for (int i = 0; i <= characters.Length - 1; i = i + 2)

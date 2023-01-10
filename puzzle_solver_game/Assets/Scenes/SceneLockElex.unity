@@ -606,6 +606,7 @@ GameObject:
   - component: {fileID: 1269423873}
   - component: {fileID: 1269423875}
   - component: {fileID: 1269423874}
+  - component: {fileID: 1269423876}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -665,7 +666,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Max tries left: '
 --- !u!222 &1269423875
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -674,6 +675,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269423872}
   m_CullTransparentMesh: 1
+--- !u!114 &1269423876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269423872}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec31951008637a34294c67610e4e18ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1269423874}
 --- !u!1 &1303448843
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,6 +2306,7 @@ MonoBehaviour:
   - {fileID: 232540873}
   - {fileID: 6754401230122775253}
   maxTries: 1
+  text: {fileID: 1269423874}
 --- !u!1 &6754401230087010516
 GameObject:
   m_ObjectHideFlags: 0
