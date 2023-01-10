@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class DigitalDisplay : MonoBehaviour
+public class LockDigit : MonoBehaviour
 {
     [SerializeField]
     private Sprite[] digits;
 
     [SerializeField]
     private Image[] characters;
+    [SerializeField]
+    GameObject canvasPanel;
 
     private string codeSequence;
 
@@ -21,6 +23,14 @@ public class DigitalDisplay : MonoBehaviour
         ResetDisplay();
 
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            canvasPanel.SetActive(false);
+        }
     }
 
     private void AddDigitToCodeSequence(string digitEntered)
@@ -129,6 +139,9 @@ public class DigitalDisplay : MonoBehaviour
         if (codeSequence == "2137")
         {
             Debug.Log("Correct!");
+            PlayerPrefs.SetInt("DidDigitQuest", 1);
+            PlayerPrefs.Save();
+            canvasPanel.SetActive(false);
         }
         else
         {

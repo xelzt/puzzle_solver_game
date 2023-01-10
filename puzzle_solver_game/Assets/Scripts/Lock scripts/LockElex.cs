@@ -11,22 +11,37 @@ public class LockElex : MonoBehaviour
 
     [SerializeField]
     private Image[] characters;
+
+    [SerializeField]
+    GameObject canvasPanel;
+
     private string codeToBreak;
     private string codeSequence;
     private List<string> symbols = new List<string>();
     public int maxTries = 1;
+    public Text text;
     private int[] numbers = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private string[] mathSymbols = new[] { "<", ">", "=" };
 
     void Start()
     {
-        PlayerPrefs.SetInt("DidSimonSays", 1);
-        PlayerPrefs.Save();
         setNumbersDependsOnPlayerPrefs();
         GenerateRandomPassword();
+        displayTriesLeft();
         ResetDisplay();
         codeSequence = "";
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            canvasPanel.SetActive(false);
+        }
+    }
+    private void displayTriesLeft()
+    {
+        text.text = "Max tries left: " + maxTries;
     }
 
     private void AddDigitToCodeSequence(string digitEntered)
@@ -149,11 +164,15 @@ public class LockElex : MonoBehaviour
         if (codeSequence == codeToBreak)
         {
             Debug.Log("Correct!");
+            PlayerPrefs.SetInt("DidElexQuest", 1);
+            PlayerPrefs.Save();
+            canvasPanel.SetActive(false);
         }
         else
         {
             Debug.Log("Wrong!");
             maxTries = maxTries - 1;
+            displayTriesLeft();
             ResetDisplay();
         }
     }
@@ -163,6 +182,7 @@ public class LockElex : MonoBehaviour
         if (maxTries == 0)
         {
             GenerateRandomPassword();
+            displayTriesLeft();
         }
         codeSequence = "";
         for (int i = 0; i <= characters.Length - 1; i = i + 2)
@@ -204,7 +224,7 @@ public class LockElex : MonoBehaviour
     }
     private void setMaxTriesDependsOnPlayerPrefs()
     {
-        if (PlayerPrefs.GetInt("DidSimonSays", 1) == 1)
+        if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1)
         {
             maxTries = 4;
         }
@@ -213,7 +233,7 @@ public class LockElex : MonoBehaviour
     }
     private void setNumbersDependsOnPlayerPrefs()
     {
-        if (PlayerPrefs.GetInt("DidSimonSays", 1) == 1)
+        if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1)
         {
             var random = new System.Random();
             for (int i = 0; i < 2; i++)
