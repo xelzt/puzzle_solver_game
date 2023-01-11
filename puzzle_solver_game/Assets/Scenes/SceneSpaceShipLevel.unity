@@ -85115,6 +85115,20 @@ MonoBehaviour:
   gameObj: {fileID: 2137047940}
   gameObjCollider: {fileID: 0}
   gameObjRenderer: {fileID: 0}
+--- !u!64 &2137047947
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137047940}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8626059365974160315, guid: 66f91e45b3db4984494c4394f379f7a7, type: 3}
 --- !u!1001 &2139873368
 PrefabInstance:
   m_ObjectHideFlags: 0

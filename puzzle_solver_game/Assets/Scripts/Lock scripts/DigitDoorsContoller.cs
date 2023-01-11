@@ -6,7 +6,7 @@ public class DigitDoorsContoller : MonoBehaviour
 {
     public GameObject leftDoors;
     public GameObject rightDoors;
-    bool animReady = true;
+    private bool animReady = true;
     void Update()
     {
         if(PlayerPrefs.GetInt("DidDigitQuest") ==1 && animReady == true)

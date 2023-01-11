@@ -23,9 +23,13 @@ public class CollectItem : MonoBehaviour
         {
             Inventory.Instance.AddItem(item);
             Debug.Log("Collected: " + item);
-            if (item.itemName != "codeHint")
+            if (item.itemName == "PowerCell")
             {
                 gameObjRenderer.enabled = false;
+                gameObjCollider.enabled = false;
+            }
+            if (item.itemName == "skeletonKey" || item.itemName == "codeHint")
+            {
                 gameObjCollider.enabled = false;
             }
 
