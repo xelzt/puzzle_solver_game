@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory
+public class Inventory : MonoBehaviour
 {
     public List<Item> itemList;
-
-    public Inventory()
+    public static Inventory Instance;
+    void Awake()
     {
-        itemList = new List<Item>();
- 
-        AddItem(new Item {ItemTypes = Item.ItemType.PassCodeHint, amount = 1});
-        Debug.Log(itemList.Count);
-    
+        Instance = this;
     }
-
-    public void AddItem(Item item){
+    public void AddItem(Item item)
+    {
         itemList.Add(item);
+    }
+    public void RemoveItem(Item item)
+    {
+        itemList.Remove(item);
     }
 }
