@@ -35568,10 +35568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayText: Click "E" to crack code
   ObjectInteractionInfoCanva: {fileID: 2089856723}
-  DisablingCanvas:
-  - {fileID: 181723112117477177}
-  - {fileID: 9180926741787780150}
-  - {fileID: 1378477762316743489}
+  DisablingCanvas: []
 --- !u!1001 &909968334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55952,10 +55949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayText: Click "E" to interact with computer
   ObjectInteractionInfoCanva: {fileID: 2089856723}
-  DisablingCanvas:
-  - {fileID: 181723112117477177}
-  - {fileID: 9180926741787780150}
-  - {fileID: 1378477762316743489}
+  DisablingCanvas: []
 --- !u!1 &1436987969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1001247641106111415, guid: e6c453db77ee6344eaedce449ad96e06, type: 3}
