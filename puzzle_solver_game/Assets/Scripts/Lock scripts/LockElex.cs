@@ -229,7 +229,6 @@ public class LockElex : MonoBehaviour
             maxTries = 4;
         }
         else maxTries = 1;
-        Debug.Log("maxTries: " + maxTries);
     }
     private void setNumbersDependsOnPlayerPrefs()
     {

@@ -23,18 +23,19 @@ public class CollectItem : MonoBehaviour
         {
             Inventory.Instance.AddItem(item);
             Debug.Log("Collected: " + item);
-            gameObjRenderer.enabled = false;
-            gameObjCollider.enabled = false;
+            if (item.itemName != "codeHint")
+            {
+                gameObjRenderer.enabled = false;
+                gameObjCollider.enabled = false;
+            }
+
             inTriger = false;
         }
     }
     void Start()
     {
-        if (gameObj.name == "Nexus")
-        {
-            gameObjCollider = GetComponent<Collider>();
-            gameObjRenderer = GetComponent<Renderer>();
-        }
+        gameObjCollider = GetComponent<Collider>();
+        gameObjRenderer = GetComponent<Renderer>();
     }
 
     void Update()
