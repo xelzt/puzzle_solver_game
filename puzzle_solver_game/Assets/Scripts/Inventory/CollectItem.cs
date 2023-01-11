@@ -4,32 +4,39 @@ using UnityEngine;
 
 public class CollectItem : MonoBehaviour
 {
-    private bool inTriger = false;
+    public bool inTriger = false;
     public Item item;
+    public GameObject gameObj;// Object to active/hide
+    public Collider gameObjCollider;// Object to active/hide
+    public Renderer gameObjRenderer;// Object to active/hide
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
             inTriger = true;
         }
     }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            inTriger = false;
-        }
-    }
     void Collect()
     {
-        if (Input.GetKeyDown(KeyCode.E) && inTriger)
+        if (Input.GetKeyDown(KeyCode.E) && inTriger && gameObjRenderer.enabled)
         {
             Inventory.Instance.AddItem(item);
             Debug.Log("Collected: " + item);
-            Destroy(gameObject);
+            gameObjRenderer.enabled = false;
+            gameObjCollider.enabled = false;
+            inTriger = false;
         }
     }
+    void Start()
+    {
+        if (gameObj.name == "Nexus" | gameObj.name == "Nexus_to_input")
+        {
+            gameObjCollider = GetComponent<Collider>();
+            gameObjRenderer = GetComponent<Renderer>();
+        }
+    }
+
     void Update()
     {
         Collect();

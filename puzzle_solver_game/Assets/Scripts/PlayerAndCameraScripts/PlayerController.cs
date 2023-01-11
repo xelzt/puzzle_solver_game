@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour {
     void Awake()
     {
         animator = GetComponent<Animator>();
-        Inventory = new Inventory();
     }
 
     private void Update() {
@@ -78,9 +77,7 @@ public class PlayerController : MonoBehaviour {
             onTheGround = true;
         }
     }
-
-
-     private void HandleAnimation()
+    private void HandleAnimation()
     {
         if(onTheGround == false)
         {
