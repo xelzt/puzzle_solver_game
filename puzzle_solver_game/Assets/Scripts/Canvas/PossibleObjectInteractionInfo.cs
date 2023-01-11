@@ -11,6 +11,8 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
     private Text Textbox;
     private bool IsComponentUsingRigidbody;
     private Rigidbody ObjectRigidbody;
+    public Canvas[] DisablingCanvas;
+    private bool DisableCanva = false;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
 
     private void DisplayForRigidBodyObjects()
     {
-        if (ObjectRigidbody.useGravity && CheckIfPlayerIsCloseToObject())
+        if (ObjectRigidbody.useGravity && CheckIfPlayerIsCloseToObject() && !DisableCanva)
         {
             ObjectInteractionInfoCanva.gameObject.SetActive(true);
         }
@@ -37,7 +39,7 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
 
     private void DisplayForNonRigidBodyObjects()
     {
-        if (CheckIfPlayerIsCloseToObject())
+        if (CheckIfPlayerIsCloseToObject() && !DisableCanva)
         {
             ObjectInteractionInfoCanva.gameObject.SetActive(true);
         }
@@ -63,6 +65,18 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
 
     void Update()
     {
+        foreach(Canvas c in DisablingCanvas)
+        {
+            if(c.gameObject.active)
+            {
+                DisableCanva = true;
+                break;
+            }
+            else
+            {
+                DisableCanva = false;
+            }
+        }
 
         if (IsComponentUsingRigidbody)
         {
@@ -72,5 +86,6 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
         {
             DisplayForNonRigidBodyObjects();
         }
+        
     }
 }
