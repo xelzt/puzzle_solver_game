@@ -13,13 +13,16 @@ public class LockDigit : MonoBehaviour
     private Image[] characters;
     [SerializeField]
     GameObject canvasPanel;
+    [SerializeField]
+    GameObject codeHint;
+    private Image hintImage;
 
     private string codeSequence;
 
     void Start()
     {
         codeSequence ="";
-
+        hintImage = codeHint.GetComponent<Image>();
         ResetDisplay();
 
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
@@ -30,6 +33,18 @@ public class LockDigit : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             canvasPanel.SetActive(false);
+        }
+        hasHint();
+    }
+    private void hasHint()
+    {
+        for (int i = 0; i < Inventory.Instance.itemList.Count; i++)
+        {
+            if (Inventory.Instance.itemList[i].itemName == "codeHint")
+            {
+                hintImage.enabled=true;
+            }
+            else hintImage.enabled=false;
         }
     }
 
