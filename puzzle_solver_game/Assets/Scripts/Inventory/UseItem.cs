@@ -6,9 +6,9 @@ public class UseItem : MonoBehaviour
 {
     public bool inTriger = false;
     public Item item;
-    public GameObject gameObj;// Object to active/hide
-    public Collider gameObjCollider;// Object to active/hide
-    public Renderer gameObjRenderer;// Object to active/hide
+    public GameObject gameObj;
+    public Collider gameObjCollider;
+    public Renderer gameObjRenderer;
 
     void OnTriggerEnter(Collider other)
     {
