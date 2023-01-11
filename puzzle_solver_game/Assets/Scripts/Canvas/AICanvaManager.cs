@@ -15,8 +15,6 @@ public class AICanvaManager : MonoBehaviour
     private void Awake()
     {
         //Get Textbox where text will be displayed
-        /*AICanva = Instantiate(AICanva).GetComponent<Canvas>();
-        DialogBoxInfoCanva = Instantiate(DialogBoxInfoCanva).GetComponent<Canvas>();*/
         DisplayTextBox = AICanva.GetComponentInChildren<Text>();
         DisplayTextBox.text = DisplayTextValue;
     }
