@@ -11,12 +11,10 @@ public class PlayerController : MonoBehaviour {
     private Vector3 _input;
     private Animator animator;
     private bool onTheGround = false;
-    private Inventory Inventory;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
-        Inventory = new Inventory();
     }
 
     private void Update() {

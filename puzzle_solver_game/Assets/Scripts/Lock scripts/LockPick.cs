@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LockPick : MonoBehaviour
 {
+    [SerializeField]
+    GameObject canvasPanel;
     public Camera cam;
     public Transform innerLock;
     public Transform pickPosition;
@@ -19,17 +21,18 @@ public class LockPick : MonoBehaviour
     private Vector2 unlockRange;
 
     private float keyPressTime = 0;
-
     private bool movePick = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         newLock();
     }
-
-    // Update is called once per frame
     void Update()
+    {
+        checkResult();
+    }
+
+    private void checkResult()
     {
         transform.localPosition = pickPosition.position;
 
@@ -48,12 +51,12 @@ public class LockPick : MonoBehaviour
             transform.rotation = rotateTo;
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             movePick = false;
             keyPressTime = 1;
         }
-        if (Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             movePick = true;
             keyPressTime = 0;
@@ -65,16 +68,13 @@ public class LockPick : MonoBehaviour
 
         float lockLerp = Mathf.LerpAngle(innerLock.eulerAngles.z, lockRotation, Time.deltaTime * lockSpeed);
         innerLock.eulerAngles = new Vector3(0, 0, lockLerp);
-
         if (lockLerp >= maxRotation - 1)
         {
             if (eulerAngle < unlockRange.y && eulerAngle > unlockRange.x)
             {
-                Debug.Log("Unlocked!");
-                newLock();
-
-                movePick = true;
-                keyPressTime = 0;
+                PlayerPrefs.SetInt("DidLockPickQuest", 1);
+                PlayerPrefs.Save();
+                canvasPanel.SetActive(false);
             }
             else
             {
@@ -83,10 +83,10 @@ public class LockPick : MonoBehaviour
             }
         }
     }
-
     void newLock()
     {
         unlockAngle = Random.Range(-maxAngle + lockRange, maxAngle - lockRange);
         unlockRange = new Vector2(unlockAngle - lockRange, unlockAngle + lockRange);
+        Debug.Log("Selecting new unlockAngle: " + unlockAngle);
     }
 }

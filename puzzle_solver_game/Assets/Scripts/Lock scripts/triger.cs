@@ -27,7 +27,6 @@ public class triger : MonoBehaviour
         {
             if (canvasPanel.name == "LockSimonSays" && PlayerPrefs.GetInt("DidSimonSaysQuest") != 1)
             {
-                Debug.Log("DidSimonSaysQuest: " + PlayerPrefs.GetInt("DidSimonSaysQuest"));
                 canvasPanel.SetActive(true);
             }
             if (canvasPanel.name == "LockDigit" && PlayerPrefs.GetInt("DidDigitQuest") != 1)
@@ -37,11 +36,14 @@ public class triger : MonoBehaviour
             {
                 canvasPanel.SetActive(true);
             }
+            if (canvasPanel.name == "LockPick" && PlayerPrefs.GetInt("DidLockPickQuest") != 1)
+            {
+                canvasPanel.SetActive(true);
+            }
         }
     }
     void Update()
     {
         enterPanel();
     }
-
 }

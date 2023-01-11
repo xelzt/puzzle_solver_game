@@ -9,7 +9,7 @@ public class ColorChanger : MonoBehaviour
     [SerializeField]
     private GameObject obj_to_change;
 
-    private void ChangeShardColour(Color col)
+    public void ChangeShardColour(Color col)
     {
         var shard_renderer = obj_to_change.GetComponent<Renderer>();
         if (shard_renderer != null) {
