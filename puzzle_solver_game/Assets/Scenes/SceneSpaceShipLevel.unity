@@ -6749,7 +6749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158653669}
   m_LocalRotation: {x: -0, y: 0.99968976, z: -0, w: -0.024908297}
-  m_LocalPosition: {x: 30.07, y: -4.09, z: -70.85}
+  m_LocalPosition: {x: -4.73, y: -4.09, z: -89.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1627129646}
@@ -8363,6 +8363,7 @@ GameObject:
   - component: {fileID: 213194085}
   - component: {fileID: 213194084}
   - component: {fileID: 213194083}
+  - component: {fileID: 213194086}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -8451,6 +8452,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &213194086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213194081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a4798ff4b19314ab32d5390e3ed2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisableCanvas:
+  - {fileID: 181723112117477177}
+  - {fileID: 9180926741787780150}
+  - {fileID: 1378477762316743489}
 --- !u!1001 &213656882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28262,7 +28279,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 762143432}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &702488417 stripped
 GameObject:
@@ -29954,8 +29971,8 @@ Transform:
   m_LocalPosition: {x: 29.89, y: -4.082222, z: -78.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 701873082}
   - {fileID: 946609035}
+  - {fileID: 701873082}
   - {fileID: 929038021}
   - {fileID: 409133606}
   - {fileID: 1700972296}
@@ -36644,7 +36661,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 762143432}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &946609036
 MonoBehaviour:
@@ -51992,7 +52009,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 78ba0e513b784ed4e9c06aa34ca88e62, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78ba0e513b784ed4e9c06aa34ca88e62, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67814,7 +67831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AICanva: {fileID: 1421482196}
   DialogBoxInfoCanva: {fileID: 1991047249}
-  DisplayTextValue: Random Text
+  DisplayTextValue: It seems that there is some missing nexus in cabinets. Try to
+    find missing nexuses. Maybe that will power the links
 --- !u!65 &1700972298
 BoxCollider:
   m_ObjectHideFlags: 0
