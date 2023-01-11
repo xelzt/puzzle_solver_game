@@ -1,15 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class Item
+[CreateAssetMenu(fileName ="New Item", menuName ="Item/Create New item")]
+public class Item : ScriptableObject
 {
-    public enum ItemType
-    {
-        PassCodeHint,
-        SkeletonKey,
-    }
-
-    public ItemType ItemTypes;
-    public int amount;
+    public int id;
+    public string itemName;
+    public int value;
+    public Sprite icon;
 }
