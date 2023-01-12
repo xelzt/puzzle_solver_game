@@ -7,7 +7,6 @@ public class BackgroundDisabler : MonoBehaviour
     public Canvas[] DisableCanvas;
 
     // Update is called once per frame
-    [System.Obsolete]
     void Update()
     {
         if(CheckIfOneOfCanvaIsActive())
@@ -20,12 +19,11 @@ public class BackgroundDisabler : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
     private bool CheckIfOneOfCanvaIsActive()
     {
         foreach(Canvas c in DisableCanvas)
         {
-            if (c.gameObject.activeSelf)
+            if (c.gameObject.activeInHierarchy)
             {
                 return true;
             }

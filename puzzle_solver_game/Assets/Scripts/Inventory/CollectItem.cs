@@ -23,7 +23,7 @@ public class CollectItem : MonoBehaviour
         {
             Inventory.Instance.AddItem(item);
             Debug.Log("Collected: " + item);
-            if (item.itemName == "PowerCell")
+            if (item.itemName == "PowerCell_01" || item.itemName == "PowerCell_02")
             {
                 gameObjRenderer.enabled = false;
                 gameObjCollider.enabled = false;
