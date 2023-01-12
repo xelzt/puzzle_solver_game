@@ -6,10 +6,6 @@ public class setActiveElement : MonoBehaviour
 {
     [SerializeField]
     public GameObject gameObj;// Object to active/hide
-    void Start()
-    {
-        PlayerPrefs.DeleteAll();
-    }
 
     void Update()
     {

@@ -7,7 +7,6 @@ public class Room1RedDoorsScript : MonoBehaviour
     public GameObject LeftDoors;
     public GameObject RightDoors;
     bool Bool = true;
-    bool Bool2 = true;
 
     void Update()
     {

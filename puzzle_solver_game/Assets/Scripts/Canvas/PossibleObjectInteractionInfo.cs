@@ -63,6 +63,7 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     void Update()
     {
         foreach(Canvas c in DisablingCanvas)
