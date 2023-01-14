@@ -23,7 +23,7 @@ public class BackgroundDisabler : MonoBehaviour
     {
         foreach(Canvas c in DisableCanvas)
         {
-            if (c.gameObject.activeInHierarchy)
+            if (c.gameObject.active)
             {
                 return true;
             }
