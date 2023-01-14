@@ -21,6 +21,7 @@ public class LockDigit : MonoBehaviour
 
     void Start()
     {
+        hasHint();
         codeSequence ="";
         hintImage = codeHint.GetComponent<Image>();
         ResetDisplay();
@@ -30,21 +31,23 @@ public class LockDigit : MonoBehaviour
 
     void Update()
     {
+        escape();
+        hasHint();
+
+
+    }
+    private void escape()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             canvasPanel.SetActive(false);
         }
-        hasHint();
     }
     private void hasHint()
     {
         for (int i = 0; i < Inventory.Instance.itemList.Count; i++)
         {
-            if (Inventory.Instance.itemList[i].itemName == "codeHint")
-            {
-                hintImage.enabled=true;
-            }
-            else hintImage.enabled=false;
+            hintImage.enabled = true ? Inventory.Instance.itemList[i].itemName == "codeHint" : false;
         }
     }
 
@@ -108,10 +111,7 @@ public class LockDigit : MonoBehaviour
                     ResetDisplay();
                     break;
                 case "Hash":
-                    if (codeSequence.Length > 0)
-                    {
-                        CheckResults();
-                    }
+                    CheckResults();
                     break;
             }
         }
@@ -153,14 +153,12 @@ public class LockDigit : MonoBehaviour
     {
         if (codeSequence == "2137")
         {
-            Debug.Log("Correct!");
             PlayerPrefs.SetInt("DidDigitQuest", 1);
             PlayerPrefs.Save();
             canvasPanel.SetActive(false);
         }
         else
         {
-            Debug.Log("Wrong!");
             ResetDisplay();
         }
     }

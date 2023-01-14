@@ -9,19 +9,15 @@ public class LockPick : MonoBehaviour
     public Camera cam;
     public Transform innerLock;
     public Transform pickPosition;
-
-    public float maxAngle = 90;
-    public float lockSpeed = 10;
-
-    [Range(1, 25)]
-    public float lockRange = 10;
-
+    private float maxAngle = 90;
+    private float lockSpeed = 10;
+    private float lockRange = 10;
     private float eulerAngle;
     private float unlockAngle;
     private Vector2 unlockRange;
 
     private float keyPressTime = 0;
-    private bool movePick = true;
+    private bool movePick;
 
     void Start()
     {
@@ -29,13 +25,34 @@ public class LockPick : MonoBehaviour
     }
     void Update()
     {
-        checkResult();
+        if (hasPick())
+        {
+            checkResult();
+        }
+        escape();
     }
-
+    private void escape()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            canvasPanel.SetActive(false);
+        }
+    }
+    private bool hasPick()
+    {
+        for (int i = 0; i < Inventory.Instance.itemList.Count; i++)
+        {
+            if (Inventory.Instance.itemList[i].itemName == "skeletonKey")
+            {
+                movePick = true;
+            }
+            else movePick = false;
+        }
+        return movePick;
+    }
     private void checkResult()
     {
         transform.localPosition = pickPosition.position;
-
         if (movePick)
         {
             Vector3 dir = Input.mousePosition - cam.WorldToScreenPoint(transform.position);
@@ -87,6 +104,5 @@ public class LockPick : MonoBehaviour
     {
         unlockAngle = Random.Range(-maxAngle + lockRange, maxAngle - lockRange);
         unlockRange = new Vector2(unlockAngle - lockRange, unlockAngle + lockRange);
-        Debug.Log("Selecting new unlockAngle: " + unlockAngle);
     }
 }

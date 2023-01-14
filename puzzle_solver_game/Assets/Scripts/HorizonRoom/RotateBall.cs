@@ -29,12 +29,14 @@ public class RotateBall : MonoBehaviour
         {
             if (Action==true)
             {
-            if(Nexus.GetComponent<MeshRenderer>().enabled == true){
-            Ball.transform.Rotate(rotationAmount);
-            if(rotationCount<3){
-            rotationCount++;}else{
-            rotationCount=0;
-            }}
+                if(Nexus.GetComponent<MeshRenderer>().enabled == true)
+                {
+                    Ball.transform.Rotate(rotationAmount);
+                    if(rotationCount<3)
+                    {
+                        rotationCount++;
+                    }else rotationCount=0;
+                }
         }
         }
 

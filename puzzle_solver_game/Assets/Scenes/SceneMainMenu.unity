@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 319820338}
   - component: {fileID: 319820337}
   - component: {fileID: 319820336}
+  - component: {fileID: 319820339}
   m_Layer: 5
   m_Name: SecondLvlSelectButton
   m_TagString: Untagged
@@ -535,9 +536,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1375287390}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: loadSecondLvl
+      - m_Target: {fileID: 319820339}
+        m_TargetAssemblyTypeName: changeScene, Assembly-CSharp
+        m_MethodName: loadLvl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -585,6 +586,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319820334}
   m_CullTransparentMesh: 1
+--- !u!114 &319820339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319820334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151952d8d184c86458d7aa841bd29bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: SceneSpaceShipLevel
 --- !u!1 &418544764
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +769,7 @@ GameObject:
   - component: {fileID: 521501569}
   - component: {fileID: 521501568}
   - component: {fileID: 521501567}
+  - component: {fileID: 521501570}
   m_Layer: 5
   m_Name: FirstLvlSelectButton
   m_TagString: Untagged
@@ -826,9 +841,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1375287390}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: loadFirstLvl
+      - m_Target: {fileID: 521501570}
+        m_TargetAssemblyTypeName: changeScene, Assembly-CSharp
+        m_MethodName: loadLvl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -876,6 +891,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521501565}
   m_CullTransparentMesh: 1
+--- !u!114 &521501570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521501565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151952d8d184c86458d7aa841bd29bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: SceneDungeonLevel
 --- !u!1 &670236865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,9 +1736,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 533b20b8f1406434ca08f4a0d2034e6f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 694e4a5ce3d0be84681497120b67b8a9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.056
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1857,7 +1885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f045d3c92e8b24847a4266b681e631e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
   LoadGamePanel: {fileID: 670236865}
   secondLvlButton: {fileID: 319820334}
   transitionTime: 1
@@ -2158,6 +2185,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725629389}
   m_CullTransparentMesh: 1
+--- !u!1001 &1934734276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4313464635840478608, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 913.6289
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 638.5339
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 194.79712
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313464635840478610, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
 --- !u!1 &1937539793
 GameObject:
   m_ObjectHideFlags: 0
