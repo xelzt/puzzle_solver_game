@@ -1659,7 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj_to_change: {fileID: 30884182}
-  colorChanged: 1
+  colorChanged: 0
 --- !u!65 &30884186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15145,7 +15145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj_to_change: {fileID: 371258646}
-  colorChanged: 1
+  colorChanged: 0
 --- !u!1001 &371922904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22352,7 +22352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj_to_change: {fileID: 523901351}
-  colorChanged: 1
+  colorChanged: 0
 --- !u!1 &526254211
 GameObject:
   m_ObjectHideFlags: 0
@@ -29374,7 +29374,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.05
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -68153,7 +68153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj_to_change: {fileID: 1691072263}
-  colorChanged: 1
+  colorChanged: 0
 --- !u!65 &1691072267
 BoxCollider:
   m_ObjectHideFlags: 0
