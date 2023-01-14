@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] GameObject mKeyMenu;
+    [SerializeField] GameObject tabKeyInventory;
     private float _speed = 5;
     private float _turnSpeed = 720;
     private float Fallmultiplier = 2.5f;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
         Look();
         HandleAnimation();
         mPressed();
+        tabPressed();
     }
 
     private void FixedUpdate() {
@@ -42,7 +44,16 @@ public class PlayerController : MonoBehaviour {
             mKeyMenu.SetActive(true);
         }
     }
-        private void Look() 
+    private void tabPressed()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            tabKeyInventory.SetActive(true);
+            InventoryManager.Instance.ListItem();
+        }
+    }
+
+    private void Look() 
     {
         if (_input == Vector3.zero) return;
         var rot = Quaternion.LookRotation(_input.ToIso(), Vector3.up);

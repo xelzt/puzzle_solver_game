@@ -45,9 +45,9 @@ public class LockDigit : MonoBehaviour
     }
     private void hasHint()
     {
-        for (int i = 0; i < Inventory.Instance.itemList.Count; i++)
+        for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
         {
-            hintImage.enabled = true ? Inventory.Instance.itemList[i].itemName == "codeHint" : false;
+            hintImage.enabled = true ? InventoryManager.Instance.itemList[i].itemName == "codeHint" : false;
         }
     }
 

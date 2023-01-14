@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SkeletonKey
   m_EditorClassIdentifier: 
   id: 1
-  itemName: skeletonKey
+  itemName: Wytrych
   value: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 416ba5067b7060f48bcbf8b97e99d538, type: 3}

@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class CollectItem : MonoBehaviour
 {
-    public bool inTriger = false;
     public Item item;
-    public GameObject gameObj;
-    public Collider gameObjCollider;
-    public Renderer gameObjRenderer;
+    public bool inTriger = false;
 
     void OnTriggerStay(Collider other)
     {
@@ -17,33 +14,20 @@ public class CollectItem : MonoBehaviour
             inTriger = true;
         }
     }
-    void Collect()
+
+    public void Collect()
     {
-        if (Input.GetKeyDown(KeyCode.E) && inTriger && gameObjRenderer.enabled)
+        if (Input.GetKeyDown(KeyCode.E) && inTriger)
         {
-            Inventory.Instance.AddItem(item);
-            if (item.itemName == "PowerCell_01" || item.itemName == "PowerCell_02")
-            {
-                gameObjRenderer.enabled = false;
-                gameObjCollider.enabled = false;
-            }
-            if (item.itemName == "skeletonKey" || item.itemName == "codeHint")
-            {
-                gameObjCollider.enabled = false;
-            }
+            InventoryManager.Instance.AddItem(item);
+            Destroy(gameObject);
 
             inTriger = false;
             PlayerPrefs.SetInt(item.itemName, 1);
         }
     }
-    void Start()
+    private void Update()
     {
-        gameObjCollider = GetComponent<Collider>();
-        gameObjRenderer = GetComponent<Renderer>();
-    }
-
-    void Update()
-    {   
         Collect();
     }
 }

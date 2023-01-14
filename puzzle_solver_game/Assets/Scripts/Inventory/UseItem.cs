@@ -36,11 +36,11 @@ public class UseItem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && inTriger && !gameObjRenderer.enabled)
         {
-            for (int i = 0; i < Inventory.Instance.itemList.Count; i++)
+            for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
             {
-                if (Inventory.Instance.itemList[i].itemName == item.itemName)
+                if (InventoryManager.Instance.itemList[i].itemName == item.itemName)
                 {
-                    Inventory.Instance.RemoveItem(item);
+                    InventoryManager.Instance.RemoveItem(item);
                     gameObjCollider.enabled = true;
                     gameObjRenderer.enabled = true;
                     inTriger = false;
