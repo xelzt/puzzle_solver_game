@@ -15,8 +15,6 @@ public class LockElex : MonoBehaviour
     [SerializeField]
     GameObject canvasPanel;
     [SerializeField]
-    GameObject nexus;
-    [SerializeField]
     GameObject shard_to_blink;
     [SerializeField]
     GameObject light_to_blink;
@@ -175,7 +173,6 @@ public class LockElex : MonoBehaviour
             PlayerPrefs.Save();
             shard_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);
             light_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);
-            nexus.GetComponent<BoxCollider>().enabled = true;
             canvasPanel.SetActive(false);
         }
         else

@@ -10,6 +10,7 @@ public class LockSimonSays : MonoBehaviour
     [SerializeField] GameObject[] rowLights;
     [SerializeField] int[] lightOrder;
     [SerializeField] GameObject simonSaysGamePanel;
+    [SerializeField] GameObject windowsPanel;
     public Camera simonSaysGamePanelCam;
     int level = 0;
     int buttonsclicked = 0;

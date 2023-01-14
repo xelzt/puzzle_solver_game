@@ -8,13 +8,8 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
     public List<Item> itemList = new List<Item>();
     public GameObject inventoryCanvas;
-
-
     public Transform ItemContent;
     public GameObject InventoryItem;
-
-    public ItemConroller[] InventoryItems;
-
     void Awake()
     {
         Instance = this;
@@ -33,10 +28,14 @@ public class InventoryManager : MonoBehaviour
     public void AddItem(Item item)
     {
         itemList.Add(item);
+        if (inventoryCanvas.activeSelf == true)
+            ListItem();
     }
     public void RemoveItem(Item item)
     {
         itemList.Remove(item);
+        if (inventoryCanvas.activeSelf == true)
+            ListItem();
     }
     public void ListItem()
     {
@@ -53,16 +52,6 @@ public class InventoryManager : MonoBehaviour
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
-        }
-        //setInventoryItems();
-    }
-    public void setInventoryItems()
-    {
-        InventoryItems = ItemContent.GetComponentInChildren<ItemConroller[]>();
-
-        for (int i = 0; i < itemList.Count; i++)
-        {
-            InventoryItems[i].AddItem(itemList[i]);
         }
     }
 }

@@ -23,8 +23,7 @@ public class PlayerController : MonoBehaviour {
         Jump();
         Look();
         HandleAnimation();
-        mPressed();
-        tabPressed();
+        HandleSpecialKeyInput();
     }
 
     private void FixedUpdate() {
@@ -37,22 +36,26 @@ public class PlayerController : MonoBehaviour {
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
-    private void mPressed()
-    {
+    private void HandleSpecialKeyInput()
+    {   
         if (Input.GetKeyDown(KeyCode.M))
         {
-            mKeyMenu.SetActive(true);
+            if (mKeyMenu.activeSelf == false)
+            {
+                mKeyMenu.SetActive(!mKeyMenu.activeSelf);
+            }
+            else mKeyMenu.SetActive(false);
         }
-    }
-    private void tabPressed()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        else if (Input.GetKeyDown(KeyCode.Tab))
         {
-            tabKeyInventory.SetActive(true);
-            InventoryManager.Instance.ListItem();
+            if (tabKeyInventory.activeSelf == false)
+            {
+                tabKeyInventory.SetActive(!tabKeyInventory.activeSelf);
+                InventoryManager.Instance.ListItem();
+            }
+            else tabKeyInventory.SetActive(false);
         }
     }
-
     private void Look() 
     {
         if (_input == Vector3.zero) return;
