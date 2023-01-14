@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,13 +8,23 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
 
     [SerializeField]
     public string DisplayText;
-    private Rigidbody Player;
+    [SerializeField]
     public Canvas ObjectInteractionInfoCanva;
+    [SerializeField]
+    public Canvas[] DisablingCanvas;
+    [SerializeField]
+    public string PlayerPrefsKey;
+    [SerializeField]
+    public GameObject MeshRendererObjectCheck;
+
+
+    private Rigidbody Player;
     private Text Textbox;
     private bool IsComponentUsingRigidbody;
     private Rigidbody ObjectRigidbody;
-    public Canvas[] DisablingCanvas;
     private bool DisableCanva = false;
+    private int PlayerPrefVariable;
+    private bool MeshRendererBasedCheck = false;
 
     private void Start()
     {
@@ -21,54 +33,35 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
         Textbox = ObjectInteractionInfoCanva.gameObject.GetComponentInChildren<Text>();
         IsComponentUsingRigidbody = this.gameObject.TryGetComponent(out Rigidbody rb);
         if (IsComponentUsingRigidbody) { ObjectRigidbody = this.gameObject.GetComponent<Rigidbody>(); }
+        if (MeshRendererObjectCheck) { MeshRendererBasedCheck = true; }
         Textbox.text = DisplayText;
+
 
     }
 
     private void DisplayForRigidBodyObjects()
     {
-        if (ObjectRigidbody.useGravity && CheckIfPlayerIsCloseToObject() && !DisableCanva)
-        {
-            ObjectInteractionInfoCanva.gameObject.SetActive(true);
-        }
-        else
-        {
-            ObjectInteractionInfoCanva.gameObject.SetActive(false);
-        }
+        bool CanvaStatus = (ObjectRigidbody.useGravity && CheckIfPlayerIsCloseToObject() && !DisableCanva && PlayerPrefVariable != 1);
+        ObjectInteractionInfoCanva.gameObject.SetActive(CanvaStatus);
     }
 
     private void DisplayForNonRigidBodyObjects()
     {
-        if (CheckIfPlayerIsCloseToObject() && !DisableCanva)
-        {
-            ObjectInteractionInfoCanva.gameObject.SetActive(true);
-        }
-        else
-        {
-            ObjectInteractionInfoCanva.gameObject.SetActive(false);
-        }
+        bool CanvaStatus = (CheckIfPlayerIsCloseToObject() && !DisableCanva && PlayerPrefVariable != 1);
+        ObjectInteractionInfoCanva.gameObject.SetActive(CanvaStatus);
     }
 
     private bool CheckIfPlayerIsCloseToObject()
     {
         var PlayerPosition = (this.transform.position - Player.position).magnitude;
-        if (PlayerPosition < 2f)
-        {
-
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (PlayerPosition < 2.5f);
     }
 
-    [System.Obsolete]
-    void Update()
+    private void CheckIfCanvaShouldBeEnabled()
     {
-        foreach(Canvas c in DisablingCanvas)
+        foreach (Canvas c in DisablingCanvas)
         {
-            if(c.gameObject.active)
+            if (c.gameObject.activeInHierarchy)
             {
                 DisableCanva = true;
                 break;
@@ -78,15 +71,24 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
                 DisableCanva = false;
             }
         }
+    }
 
-        if (IsComponentUsingRigidbody)
-        {
-            DisplayForRigidBodyObjects();
+    void Update()
+    {
+        PlayerPrefVariable = PlayerPrefs.GetInt(PlayerPrefsKey);
+        CheckIfCanvaShouldBeEnabled();
+        if (MeshRendererBasedCheck) 
+        { 
+            var x = MeshRendererObjectCheck.gameObject.GetComponent<MeshRenderer>().enabled; 
+            if (x)
+            {
+                (IsComponentUsingRigidbody.Equals(true) ? (Action)DisplayForRigidBodyObjects : DisplayForNonRigidBodyObjects)();
+            }
         }
         else
         {
-            DisplayForNonRigidBodyObjects();
+            (IsComponentUsingRigidbody.Equals(true) ? (Action)DisplayForRigidBodyObjects : DisplayForNonRigidBodyObjects)();
         }
-        
+
     }
 }

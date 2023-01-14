@@ -33,6 +33,7 @@ public class CollectItem : MonoBehaviour
             }
 
             inTriger = false;
+            PlayerPrefs.SetInt(item.itemName, 1);
         }
     }
     void Start()
@@ -42,7 +43,7 @@ public class CollectItem : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
         Collect();
     }
 }

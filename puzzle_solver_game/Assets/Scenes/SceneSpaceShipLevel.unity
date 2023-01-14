@@ -4273,6 +4273,7 @@ GameObject:
   - component: {fileID: 86234872}
   - component: {fileID: 86234871}
   - component: {fileID: 86234870}
+  - component: {fileID: 86234874}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -4371,6 +4372,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86234868}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &86234874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86234868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to push button
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  DisablingCanvas: []
+  PlayerPrefsKey: LampPortalButton
+  MeshRendererObjectCheck: {fileID: 0}
 --- !u!1001 &91517042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6997,7 +7015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158653669}
   m_LocalRotation: {x: -0, y: 0.99968976, z: -0, w: -0.024908297}
-  m_LocalPosition: {x: 29.34, y: -4.37, z: -80.33}
+  m_LocalPosition: {x: -7, y: -4.37, z: -50.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1627129646}
@@ -12078,26 +12096,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 8a2b6c653387951409f0027c5a12a5ee, type: 3}
---- !u!1 &301584683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3315489266759930359, guid: f355da60777d10946920a8b633e6b316, type: 3}
-  m_PrefabInstance: {fileID: 999804401}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &301584684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301584683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DisplayText: Click "E" to grab hint
-  ObjectInteractionInfoCanva: {fileID: 2089856723}
-  DisablingCanvas: []
 --- !u!1 &302133717
 GameObject:
   m_ObjectHideFlags: 0
@@ -16770,7 +16768,7 @@ BoxCollider:
   m_GameObject: {fileID: 408440138}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.6188354, y: 0.5, z: 2.9776797}
   m_Center: {x: 0, y: 0, z: 0}
@@ -16804,6 +16802,26 @@ MonoBehaviour:
   gameObj: {fileID: 408440138}
   gameObjCollider: {fileID: 0}
   gameObjRenderer: {fileID: 0}
+--- !u!114 &408440143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408440138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to grab object
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  DisablingCanvas:
+  - {fileID: 181723112117477177}
+  - {fileID: 345201923}
+  - {fileID: 1378477762316743489}
+  PlayerPrefsKey: PowerCell_01
+  MeshRendererObjectCheck: {fileID: 0}
 --- !u!1 &409133605
 GameObject:
   m_ObjectHideFlags: 0
@@ -35637,6 +35655,8 @@ MonoBehaviour:
   DisplayText: Click "E" to crack code
   ObjectInteractionInfoCanva: {fileID: 2089856723}
   DisablingCanvas: []
+  PlayerPrefsKey: DidDigitQuest
+  MeshRendererObjectCheck: {fileID: 0}
 --- !u!1001 &897631260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36217,6 +36237,8 @@ MonoBehaviour:
   - {fileID: 181723112117477177}
   - {fileID: 345201923}
   - {fileID: 1378477762316743489}
+  PlayerPrefsKey: DidElexQuest
+  MeshRendererObjectCheck: {fileID: 0}
 --- !u!1001 &909968334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51840,6 +51862,7 @@ GameObject:
   - component: {fileID: 1331478400}
   - component: {fileID: 1331478399}
   - component: {fileID: 1331478402}
+  - component: {fileID: 1331478403}
   m_Layer: 0
   m_Name: BallTrigger3
   m_TagString: Untagged
@@ -51940,6 +51963,23 @@ MonoBehaviour:
   Ball: {fileID: 126642880}
   Action: 0
   Nexus: {fileID: 1333103898}
+--- !u!114 &1331478403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331478397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to rotate the link
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  DisablingCanvas: []
+  PlayerPrefsKey: 
+  MeshRendererObjectCheck: {fileID: 0}
 --- !u!1 &1332991549
 GameObject:
   m_ObjectHideFlags: 0
@@ -56802,6 +56842,8 @@ MonoBehaviour:
   - {fileID: 181723112117477177}
   - {fileID: 345201923}
   - {fileID: 1378477762316743489}
+  PlayerPrefsKey: DidSimonSaysQuest
+  MeshRendererObjectCheck: {fileID: 0}
 --- !u!1 &1437153173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6482374531920544340, guid: 1fb800d0ab21d2d46a224b45ed7951ed, type: 3}
@@ -62728,6 +62770,7 @@ GameObject:
   - component: {fileID: 1562072781}
   - component: {fileID: 1562072780}
   - component: {fileID: 1562072783}
+  - component: {fileID: 1562072784}
   m_Layer: 0
   m_Name: BallTrigger2
   m_TagString: Untagged
@@ -62828,6 +62871,23 @@ MonoBehaviour:
   Ball: {fileID: 1170850314}
   Action: 0
   Nexus: {fileID: 1825322302}
+--- !u!114 &1562072784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562072778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to rotate the link
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  DisablingCanvas: []
+  PlayerPrefsKey: 
+  MeshRendererObjectCheck: {fileID: 1825322302}
 --- !u!1 &1563044857
 GameObject:
   m_ObjectHideFlags: 0
@@ -76105,43 +76165,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.43924
+      value: -22.436653
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.58133
+      value: 3.5813487
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 34.85951
+      value: 34.856018
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999619
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.003407063
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.0076144584
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.0025663155
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 0.388
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 0.874
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.297
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 788d505abb26783418a6fc983733e605, type: 3}
       propertyPath: m_Name
@@ -76989,6 +77049,7 @@ GameObject:
   - component: {fileID: 1917822599}
   - component: {fileID: 1917822598}
   - component: {fileID: 1917822597}
+  - component: {fileID: 1917822601}
   m_Layer: 0
   m_Name: BallTrigger1
   m_TagString: Untagged
@@ -77089,6 +77150,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917822595}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1917822601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917822595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to rotate the link
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  DisablingCanvas: []
+  PlayerPrefsKey: 
+  MeshRendererObjectCheck: {fileID: 0}
 --- !u!1001 &1920598690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79487,6 +79565,7 @@ GameObject:
   - component: {fileID: 1983535524}
   - component: {fileID: 1983535523}
   - component: {fileID: 1983535526}
+  - component: {fileID: 1983535527}
   m_Layer: 0
   m_Name: BallTrigger4
   m_TagString: Untagged
@@ -79587,6 +79666,23 @@ MonoBehaviour:
   Ball: {fileID: 703127936}
   Action: 0
   Nexus: {fileID: 101022280}
+--- !u!114 &1983535527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983535521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to rotate the link
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  DisablingCanvas: []
+  PlayerPrefsKey: 
+  MeshRendererObjectCheck: {fileID: 101022280}
 --- !u!1 &1984626239
 GameObject:
   m_ObjectHideFlags: 0
@@ -86291,6 +86387,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8626059365974160315, guid: 66f91e45b3db4984494c4394f379f7a7, type: 3}
+--- !u!114 &2137047948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137047940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to grab hint
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  DisablingCanvas:
+  - {fileID: 181723112117477177}
+  - {fileID: 345201923}
+  - {fileID: 1378477762316743489}
+  PlayerPrefsKey: codeHint
+  MeshRendererObjectCheck: {fileID: 0}
 --- !u!1001 &2139873368
 PrefabInstance:
   m_ObjectHideFlags: 0
