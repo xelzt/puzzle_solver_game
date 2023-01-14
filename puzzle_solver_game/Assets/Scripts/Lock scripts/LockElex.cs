@@ -16,6 +16,9 @@ public class LockElex : MonoBehaviour
     GameObject canvasPanel;
     [SerializeField]
     GameObject shard_to_blink;
+    [SerializeField]
+    GameObject light_to_blink;
+
 
     private string codeToBreak;
     private string codeSequence;
@@ -169,6 +172,7 @@ public class LockElex : MonoBehaviour
             PlayerPrefs.SetInt("DidElexQuest", 1);
             PlayerPrefs.Save();
             shard_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);
+            light_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);
             canvasPanel.SetActive(false);
         }
         else

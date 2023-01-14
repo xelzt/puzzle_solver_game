@@ -22,7 +22,6 @@ public class CollectItem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && inTriger && gameObjRenderer.enabled)
         {
             Inventory.Instance.AddItem(item);
-            Debug.Log("Collected: " + item);
             if (item.itemName == "PowerCell_01" || item.itemName == "PowerCell_02")
             {
                 gameObjRenderer.enabled = false;

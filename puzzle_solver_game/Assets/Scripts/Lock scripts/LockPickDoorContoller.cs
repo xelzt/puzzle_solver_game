@@ -15,7 +15,6 @@ public class LockPickDoorContoller : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("DidLockPickQuest") == 1 && animReady == true)
         {
-            Debug.Log(PlayerPrefs.GetInt("DidLockPickQuest"));
             doors.GetComponent<Animation>().Play("LP_doors_open");
             animReady = false;
         }
