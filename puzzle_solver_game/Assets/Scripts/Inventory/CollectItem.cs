@@ -21,8 +21,7 @@ public class CollectItem : MonoBehaviour
         {
             InventoryManager.Instance.AddItem(item);
             PlayerPrefs.SetInt(item.itemName, 1);
-            Debug.Log(item.itemName);
-            Destroy(gameObject, 0.2f);
+            Destroy(gameObject, 0.1f);
 
             inTriger = false;
         }
