@@ -44,6 +44,7 @@ public class UseItem : MonoBehaviour
                     gameObjCollider.enabled = true;
                     gameObjRenderer.enabled = true;
                     inTriger = false;
+                    PlayerPrefs.SetInt(item.itemName, 2);
                 }
             }
         }

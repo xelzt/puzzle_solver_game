@@ -11,84 +11,86 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
     [SerializeField]
     public Canvas ObjectInteractionInfoCanva;
     [SerializeField]
-    public Canvas[] DisablingCanvas;
+    public GameObject[] ConflictingObjects;
     [SerializeField]
     public string PlayerPrefsKey;
     [SerializeField]
-    public GameObject MeshRendererObjectCheck;
+    public int ExpectedPlayerPrefsValue = 0;
 
 
-    private Rigidbody Player;
     private Text Textbox;
     private bool IsComponentUsingRigidbody;
     private Rigidbody ObjectRigidbody;
     private bool DisableCanva = false;
     private int PlayerPrefVariable;
-    private bool MeshRendererBasedCheck = false;
+    private Canvas ObjectInteractionInfoCanvaCopy;
+    private bool CollisionWithObject;
 
     private void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
-        ObjectInteractionInfoCanva = Instantiate(ObjectInteractionInfoCanva).GetComponent<Canvas>();
-        Textbox = ObjectInteractionInfoCanva.gameObject.GetComponentInChildren<Text>();
         IsComponentUsingRigidbody = this.gameObject.TryGetComponent(out Rigidbody rb);
         if (IsComponentUsingRigidbody) { ObjectRigidbody = this.gameObject.GetComponent<Rigidbody>(); }
-        if (MeshRendererObjectCheck) { MeshRendererBasedCheck = true; }
-        Textbox.text = DisplayText;
-
-
+        ObjectInteractionInfoCanvaCopy = ObjectInteractionInfoCanva.GetComponent<Canvas>();
     }
 
     private void DisplayForRigidBodyObjects()
     {
-        bool CanvaStatus = (ObjectRigidbody.useGravity && CheckIfPlayerIsCloseToObject() && !DisableCanva && PlayerPrefVariable != 1);
+        bool CanvaStatus = (ObjectRigidbody.useGravity && !IsPuzzleSolved() && !DisableCanva);
         ObjectInteractionInfoCanva.gameObject.SetActive(CanvaStatus);
     }
 
     private void DisplayForNonRigidBodyObjects()
     {
-        bool CanvaStatus = (CheckIfPlayerIsCloseToObject() && !DisableCanva && PlayerPrefVariable != 1);
+        bool CanvaStatus = (IsPuzzleSolved() && !DisableCanva);
         ObjectInteractionInfoCanva.gameObject.SetActive(CanvaStatus);
     }
 
-    private bool CheckIfPlayerIsCloseToObject()
+    private bool IsPuzzleSolved()
     {
-        var PlayerPosition = (this.transform.position - Player.position).magnitude;
-        return (PlayerPosition < 2.5f);
+        return PlayerPrefVariable == ExpectedPlayerPrefsValue;
     }
 
-    private void CheckIfCanvaShouldBeEnabled()
+    private bool AreConflictingObjectsEnabled()
     {
-        foreach (Canvas c in DisablingCanvas)
+        foreach (GameObject go in ConflictingObjects)
         {
-            if (c.gameObject.activeInHierarchy)
-            {
-                DisableCanva = true;
-                break;
-            }
-            else
-            {
-                DisableCanva = false;
-            }
+            if (go.activeInHierarchy) { return true; }
         }
+        return false;
     }
 
-    void Update()
+    private void Update()
     {
-        PlayerPrefVariable = PlayerPrefs.GetInt(PlayerPrefsKey);
-        CheckIfCanvaShouldBeEnabled();
-        if (MeshRendererBasedCheck) 
-        { 
-            var x = MeshRendererObjectCheck.gameObject.GetComponent<MeshRenderer>().enabled; 
-            if (x)
-            {
-                (IsComponentUsingRigidbody.Equals(true) ? (Action)DisplayForRigidBodyObjects : DisplayForNonRigidBodyObjects)();
-            }
-        }
-        else
+        if (CollisionWithObject)
         {
+            PlayerPrefVariable = PlayerPrefs.GetInt(PlayerPrefsKey);
+            DisableCanva = AreConflictingObjectsEnabled();
             (IsComponentUsingRigidbody.Equals(true) ? (Action)DisplayForRigidBodyObjects : DisplayForNonRigidBodyObjects)();
         }
+    }
 
+    private void CreateCanvaObject()
+    {
+        CollisionWithObject = true;
+        ObjectInteractionInfoCanva = Instantiate(ObjectInteractionInfoCanva).GetComponent<Canvas>();
+        Textbox = ObjectInteractionInfoCanva.gameObject.GetComponentInChildren<Text>();
+        Textbox.text = DisplayText;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player")){ CreateCanvaObject(); }
+    }
+
+    private void DestroyCanvaObject()
+    {
+        CollisionWithObject = false;
+        Destroy(ObjectInteractionInfoCanva.gameObject, 0.2f);
+        ObjectInteractionInfoCanva = ObjectInteractionInfoCanvaCopy;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player") { DestroyCanvaObject(); }
     }
 }

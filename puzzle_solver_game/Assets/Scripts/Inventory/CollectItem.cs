@@ -20,10 +20,11 @@ public class CollectItem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && inTriger)
         {
             InventoryManager.Instance.AddItem(item);
-            Destroy(gameObject);
+            PlayerPrefs.SetInt(item.itemName, 1);
+            Debug.Log(item.itemName);
+            Destroy(gameObject, 0.2f);
 
             inTriger = false;
-            PlayerPrefs.SetInt(item.itemName, 1);
         }
     }
     private void Update()
