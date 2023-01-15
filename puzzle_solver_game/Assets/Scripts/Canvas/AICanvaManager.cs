@@ -11,14 +11,12 @@ public class AICanvaManager : MonoBehaviour
     private Text DisplayTextBox;
     public string DisplayTextValue;
     private bool isDialogBoxInfoCanvaActive = false;
+    private Canvas DialogBoxInfoCanvaCopy;
 
     private void Awake()
     {
-        //Get Textbox where text will be displayed
-        AICanva = Instantiate(AICanva).GetComponent<Canvas>();
-        DialogBoxInfoCanva = Instantiate(DialogBoxInfoCanva).GetComponent<Canvas>();
-        DisplayTextBox = AICanva.GetComponentInChildren<Text>();
-        DisplayTextBox.text = DisplayTextValue;
+        DialogBoxInfoCanva = DialogBoxInfoCanva.GetComponent<Canvas>();
+        DialogBoxInfoCanvaCopy = DialogBoxInfoCanva.GetComponent<Canvas>();
     }
 
     private void Update()
@@ -35,14 +33,17 @@ public class AICanvaManager : MonoBehaviour
     {
         if (!FirstTimeEnabled)
         {
-
+            AICanva = Instantiate(AICanva).GetComponent<Canvas>();
+            DisplayTextBox = AICanva.GetComponentInChildren<Text>();
+            DisplayTextBox.text = DisplayTextValue;
             AICanva.gameObject.SetActive(true);
             FirstTimeEnabled = true;
 
         }
         else
         {
-            DialogBoxInfoCanva.gameObject.SetActive(true);            
+            DialogBoxInfoCanva = Instantiate(DialogBoxInfoCanva).GetComponent<Canvas>();
+            DialogBoxInfoCanva.gameObject.SetActive(true);   
             isDialogBoxInfoCanvaActive = true;
         }
         
@@ -50,8 +51,24 @@ public class AICanvaManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        DialogBoxInfoCanva.gameObject.SetActive(false);
-        isDialogBoxInfoCanvaActive = false;
+        if (!FirstTimeEnabled) 
+        {
+            if(!AICanva.gameObject.activeInHierarchy)
+            {
+                Destroy(AICanva.gameObject, 0.2f);
+            }
+        }
+        else
+        {
+            isDialogBoxInfoCanvaActive = false;
+            if (DialogBoxInfoCanva.gameObject.activeInHierarchy)
+            {
+                DialogBoxInfoCanva.gameObject.SetActive(false);
+                Destroy(DialogBoxInfoCanva.gameObject, 0.2f);
+                DialogBoxInfoCanva = DialogBoxInfoCanvaCopy;
+            }
+        }
+        
     }
 
 }
