@@ -25,18 +25,37 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
     private int PlayerPrefVariable;
     private Canvas ObjectInteractionInfoCanvaCopy;
     private bool CollisionWithObject;
+    private Rigidbody Player;
 
-    private void Start()
+    private void Awake()
     {
         IsComponentUsingRigidbody = this.gameObject.TryGetComponent(out Rigidbody rb);
         if (IsComponentUsingRigidbody) { ObjectRigidbody = this.gameObject.GetComponent<Rigidbody>(); }
         ObjectInteractionInfoCanvaCopy = ObjectInteractionInfoCanva.GetComponent<Canvas>();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
     }
 
     private void DisplayForRigidBodyObjects()
     {
-        bool CanvaStatus = (ObjectRigidbody.useGravity && !IsPuzzleSolved() && !DisableCanva);
-        ObjectInteractionInfoCanva.gameObject.SetActive(CanvaStatus);
+        bool CanvaStatus = (ObjectRigidbody.useGravity && !DisableCanva);
+        bool IsCanvaActiveInHierarchy = ObjectInteractionInfoCanva.gameObject.activeInHierarchy;
+        if (CanvaStatus) 
+        {
+            if(!IsCanvaActiveInHierarchy)
+            {
+                CreateCanvaObject();
+                ObjectInteractionInfoCanva.gameObject.SetActive(true);
+            }
+            
+        }
+        else
+        {
+            if(IsCanvaActiveInHierarchy)
+            {
+                ObjectInteractionInfoCanva.gameObject.SetActive(false);
+                DestroyCanvaObject();
+            }
+        }
     }
 
     private void DisplayForNonRigidBodyObjects()
@@ -65,7 +84,14 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
         {
             PlayerPrefVariable = PlayerPrefs.GetInt(PlayerPrefsKey);
             DisableCanva = AreConflictingObjectsEnabled();
-            (IsComponentUsingRigidbody.Equals(true) ? (Action)DisplayForRigidBodyObjects : DisplayForNonRigidBodyObjects)();
+            DisplayForNonRigidBodyObjects();
+        }
+
+        if(IsComponentUsingRigidbody)
+        {
+            float object_player_distance = (this.transform.position - Player.position).magnitude;
+            DisableCanva = !(object_player_distance < 2f);
+            DisplayForRigidBodyObjects();
         }
     }
 
