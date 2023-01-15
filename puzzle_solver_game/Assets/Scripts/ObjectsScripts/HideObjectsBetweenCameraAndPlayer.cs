@@ -12,128 +12,109 @@ public class HideObjectsBetweenCameraAndPlayer : MonoBehaviour
     private Transform Player;
     private List<ObjectToHide> ObjectsBlockingView = new List<ObjectToHide>();
     private RaycastHit[] Hits = new RaycastHit[10];
-    private void Start()
-    {
-        StartCoroutine(CheckIfCameraCollidesWithObject());
-    }
+    private Dictionary<ObjectToHide, Coroutine> ViewBlockingObjectsCoroutines = new Dictionary<ObjectToHide, Coroutine>(); 
 
-    private IEnumerator CheckIfCameraCollidesWithObject()
+    private void Update()
     {
-        while (true)
+        int hits = Physics.RaycastNonAlloc(Camera.transform.position, (Player.transform.position - Camera.transform.position).normalized, Hits, Vector3.Distance(Camera.transform.position, Player.transform.position), LayerMask);
+        if (hits > 0)
         {
-            int hits = Physics.RaycastNonAlloc(Camera.transform.position, (Player.transform.position - Camera.transform.position).normalized, Hits, Vector3.Distance(Camera.transform.position, Player.transform.position), LayerMask);
-            if (hits>0)
+            foreach (RaycastHit hit in Hits)
             {
-                foreach(RaycastHit h in Hits)
+                ObjectToHide ViewBlockingObject = GetViewBlockingObjectsFromHit(hit);
+                if (ViewBlockingObject != null && !ObjectsBlockingView.Contains(ViewBlockingObject))
                 {
-                    ObjectToHide objectToFade = GetFadingObjectFromHit(h);
-                    if (objectToFade != null && !ObjectsBlockingView.Contains(objectToFade))
-                    {
-                        ObjectsBlockingView.Add(objectToFade);
-                        StartCoroutine(FadeObjectOut(objectToFade));
-                    }
+                    ResetCoroutines(ViewBlockingObject);
+                    ViewBlockingObjectsCoroutines.Add(ViewBlockingObject, StartCoroutine(FadeBlockingObject(ViewBlockingObject)));
+                    ObjectsBlockingView.Add(ViewBlockingObject);
                 }
-                
             }
-
-            FadeObjectsNoLongerBeingHit();
-            ResetHits();
-
-            yield return null;
         }
+        ResetObjectsWhichAreNotHit();
+        ResetHits();
     }
 
-    private void FadeObjectsNoLongerBeingHit()
-    {
-        for (int i = 0; i < ObjectsBlockingView.Count; i++)
-        {
-            bool objectIsBeingHit = false;
-            for (int j = 0; j < Hits.Length; j++)
-            {
-                ObjectToHide fadingObject = GetFadingObjectFromHit(Hits[j]);
-                if (fadingObject != null && fadingObject == ObjectsBlockingView[i])
-                {
-                    objectIsBeingHit = true;
-                    break;
-                }
-
-            }
-
-            if(!objectIsBeingHit)
-            {
-                StopCoroutine(FadeObjectOut(ObjectsBlockingView[i]));
-                StartCoroutine(FadeObjectIn(ObjectsBlockingView[i]));
-                ObjectsBlockingView.RemoveAt(i);
-            }
-            
-
-        }
-    }
-    private ObjectToHide GetFadingObjectFromHit(RaycastHit Hit)
+    private ObjectToHide GetViewBlockingObjectsFromHit(RaycastHit Hit)
     {
         return Hit.collider != null ? Hit.collider.GetComponent<ObjectToHide>() : null;
-    } 
+    }
 
-    private IEnumerator FadeObjectOut(ObjectToHide obj)
+    private void ResetCoroutines(ObjectToHide ViewBlockingObject)
+    {
+        if (ViewBlockingObjectsCoroutines.ContainsKey(ViewBlockingObject))
+        {
+            if (ViewBlockingObjectsCoroutines[ViewBlockingObject] != null)
+            {
+                StopCoroutine(ViewBlockingObjectsCoroutines[ViewBlockingObject]);
+            }
+            ViewBlockingObjectsCoroutines.Remove(ViewBlockingObject);
+        }
+    }
+
+    private IEnumerator FadeBlockingObject(ObjectToHide obj)
     {
 
-        for (int i = 0; i < obj.Materials.Count; i++)
-        {
-            obj.Materials[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha); // affects both "Transparent" and "Fade" options
-            obj.Materials[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha); // affects both "Transparent" and "Fade" options
-            obj.Materials[i].SetInt("_ZWrite", 0); // disable Z writing
-            obj.Materials[i].EnableKeyword("_ALPHABLEND_ON");
-            obj.Materials[i].renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
-        }
+        obj.Materials.ForEach(m => { ModifyShaderMaterialForFade(m); });
 
         while (obj.Materials[0].color.a > 0.2f)
         {
-
-            for (int i = 0; i < obj.Materials.Count; i++)
-            {
-                obj.Materials[i].color = new Color(
-                    obj.Materials[i].color.r,
-                    obj.Materials[i].color.g,
-                    obj.Materials[i].color.b,
-                    obj.Materials[0].color.a - (1f*Time.deltaTime)
-                );
-            }
+            obj.Materials.ForEach(m => { m.color = new Color(m.color.r, m.color.g, m.color.b, m.color.a - (1f * Time.deltaTime)); });
             yield return null;
         }
     }
 
-    private IEnumerator FadeObjectIn(ObjectToHide obj)
+    private void ModifyShaderMaterialForFade(Material mat)
     {
-        if (obj.Materials[0].HasProperty("_Color"))
-        {
-            while (obj.Materials[0].color.a < 1)
-            {
-                for (int i = 0; i < obj.Materials.Count; i++)
-                {
-                    if (obj.Materials[i].HasProperty("_Color"))
-                    {
-                        obj.Materials[i].color = new Color(
-                            obj.Materials[i].color.r,
-                            obj.Materials[i].color.g,
-                            obj.Materials[i].color.b,
-                            obj.Materials[0].color.a + (1f*Time.deltaTime)
-                        );
-                    }
-                }
+        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        mat.SetInt("_ZWrite", 0);
+        mat.EnableKeyword("_ALPHABLEND_ON");
+        mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+    }
 
-                yield return null;
+    private void ResetObjectsWhichAreNotHit()
+    {
+        for (int i = 0; i < ObjectsBlockingView.Count; i++)
+        {
+            bool IsObjectHit = false;
+
+            foreach(RaycastHit hit in Hits)
+            {
+                ObjectToHide ViewBlockingObject = GetViewBlockingObjectsFromHit(hit);
+                if (ViewBlockingObject != null && ViewBlockingObject == ObjectsBlockingView[i])
+                {
+                    IsObjectHit = true;
+                }
+            }
+
+            if(!IsObjectHit)
+            {
+                ResetCoroutines(ObjectsBlockingView[i]);
+                ViewBlockingObjectsCoroutines.Add(ObjectsBlockingView[i], StartCoroutine(ResetObjectFade(ObjectsBlockingView[i])));
+                ObjectsBlockingView.RemoveAt(i);
             }
         }
+    }
 
-        for (int i = 0; i < obj.Materials.Count; i++)
+    private IEnumerator ResetObjectFade(ObjectToHide obj)
+    {
+
+        while (obj.Materials[0].color.a < 1)
         {
-            obj.Materials[i].DisableKeyword("_ALPHABLEND_ON");
-            obj.Materials[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            obj.Materials[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-            obj.Materials[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-            obj.Materials[i].SetInt("_ZWrite", 1); // re-enable Z Writing
-            obj.Materials[i].renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry;
+            obj.Materials.ForEach(m => { m.color = new Color(m.color.r, m.color.g, m.color.b, m.color.a + (1f * Time.deltaTime)); });
+            yield return null;
         }
+        obj.Materials.ForEach(m => { ResetShaderMaterial(m); });
+    }
+
+    private void ResetShaderMaterial(Material mat)
+    {
+        mat.DisableKeyword("_ALPHABLEND_ON");
+        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+        mat.SetInt("_ZWrite", 1);
+        mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry;
     }
 
     private void ResetHits()

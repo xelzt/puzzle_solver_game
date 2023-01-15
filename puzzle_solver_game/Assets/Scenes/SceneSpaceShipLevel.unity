@@ -1826,7 +1826,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1001 &33574201
 PrefabInstance:
@@ -2848,7 +2847,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &49410368
 BoxCollider:
@@ -4676,7 +4674,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1001 &97396789
 PrefabInstance:
@@ -7062,7 +7059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158653669}
   m_LocalRotation: {x: -0, y: 0.99968976, z: -0, w: -0.024908297}
-  m_LocalPosition: {x: -15.9, y: -4.37, z: -131.5}
+  m_LocalPosition: {x: -3.74, y: -4.37, z: -109.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1627129646}
@@ -9249,7 +9246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1001 &230023464
 PrefabInstance:
@@ -12256,7 +12252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &306842599
 BoxCollider:
@@ -16669,7 +16664,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1001 &407688667
 PrefabInstance:
@@ -19367,7 +19361,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &443197186
 BoxCollider:
@@ -21182,7 +21175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1001 &492324454
 PrefabInstance:
@@ -21596,7 +21588,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1 &500241205
 GameObject:
@@ -31300,7 +31291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1001 &772586587
 PrefabInstance:
@@ -34636,7 +34626,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &864713804
 BoxCollider:
@@ -35539,7 +35528,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1 &886888674 stripped
 GameObject:
@@ -36935,7 +36923,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &918352651
 BoxCollider:
@@ -38039,7 +38026,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1001 &973395822
 PrefabInstance:
@@ -38830,7 +38816,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &986945549
 BoxCollider:
@@ -42127,7 +42112,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &1060064633
 BoxCollider:
@@ -49873,7 +49857,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &1284208776
 BoxCollider:
@@ -51532,7 +51515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1 &1321141259
 GameObject:
@@ -52579,7 +52561,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!4 &1338451328 stripped
 Transform:
@@ -54519,7 +54500,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &1385482816
 BoxCollider:
@@ -56374,7 +56354,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1 &1424294930
 GameObject:
@@ -61858,7 +61837,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &1543559214
 BoxCollider:
@@ -70926,7 +70904,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1001 &1770330326
 PrefabInstance:
@@ -73093,7 +73070,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &1820538515
 BoxCollider:
@@ -73885,7 +73861,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!4 &1844482033 stripped
 Transform:
@@ -74213,7 +74188,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &1850898113
 BoxCollider:
@@ -80277,7 +80251,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &1995950164
 BoxCollider:
@@ -85347,7 +85320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!65 &2108308621
 BoxCollider:
@@ -86572,7 +86544,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!1 &2137047940 stripped
 GameObject:
@@ -87105,7 +87076,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderers: []
   Materials: []
-  Position: {x: 0, y: 0, z: 0}
   Alpha: 0
 --- !u!223 &1378477762316743489 stripped
 Canvas:
