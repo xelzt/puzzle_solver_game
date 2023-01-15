@@ -1,4 +1,0 @@
-Level 1 - Room 7:
-	- Implement script which fades object between camera and player for wall
-	- Apply Mesh Collider for stairs and move them up a little bit
-	
