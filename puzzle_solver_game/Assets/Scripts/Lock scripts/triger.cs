@@ -28,6 +28,7 @@ public class triger : MonoBehaviour
             if (canvasPanel.name == "LockSimonSays" && PlayerPrefs.GetInt("DidSimonSaysQuest") != 1)
             {
                 canvasPanel.SetActive(true);
+                Debug.Log("try to active simon");
             }
             if (canvasPanel.name == "LockDigit" && PlayerPrefs.GetInt("DidDigitQuest") != 1)
             {

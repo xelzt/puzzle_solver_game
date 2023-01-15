@@ -32,6 +32,7 @@ public class Room6ActiveButton : MonoBehaviour
             {
                shard_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);
                button_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);
+                PlayerPrefs.SetInt("LampPortalButton", 1);
             }
         }
     }

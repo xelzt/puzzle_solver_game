@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,87 +8,115 @@ public class PossibleObjectInteractionInfo : MonoBehaviour
 
     [SerializeField]
     public string DisplayText;
-    private Rigidbody Player;
+    [SerializeField]
     public Canvas ObjectInteractionInfoCanva;
+    [SerializeField]
+    public GameObject[] ConflictingObjects;
+    [SerializeField]
+    public string PlayerPrefsKey;
+    [SerializeField]
+    public int ExpectedPlayerPrefsValue = 0;
+
+
     private Text Textbox;
     private bool IsComponentUsingRigidbody;
     private Rigidbody ObjectRigidbody;
-    public Canvas[] DisablingCanvas;
     private bool DisableCanva = false;
+    private int PlayerPrefVariable;
+    private Canvas ObjectInteractionInfoCanvaCopy;
+    private bool CollisionWithObject;
+    private Rigidbody Player;
 
-    private void Start()
+    private void Awake()
     {
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
-        ObjectInteractionInfoCanva = Instantiate(ObjectInteractionInfoCanva).GetComponent<Canvas>();
-        Textbox = ObjectInteractionInfoCanva.gameObject.GetComponentInChildren<Text>();
         IsComponentUsingRigidbody = this.gameObject.TryGetComponent(out Rigidbody rb);
         if (IsComponentUsingRigidbody) { ObjectRigidbody = this.gameObject.GetComponent<Rigidbody>(); }
-        Textbox.text = DisplayText;
-
+        ObjectInteractionInfoCanvaCopy = ObjectInteractionInfoCanva.GetComponent<Canvas>();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
     }
 
     private void DisplayForRigidBodyObjects()
     {
-        if (ObjectRigidbody.useGravity && CheckIfPlayerIsCloseToObject() && !DisableCanva)
+        bool CanvaStatus = (ObjectRigidbody.useGravity && !DisableCanva);
+        bool IsCanvaActiveInHierarchy = ObjectInteractionInfoCanva.gameObject.activeInHierarchy;
+        if (CanvaStatus) 
         {
-            ObjectInteractionInfoCanva.gameObject.SetActive(true);
+            if(!IsCanvaActiveInHierarchy)
+            {
+                CreateCanvaObject();
+                ObjectInteractionInfoCanva.gameObject.SetActive(true);
+            }
+            
         }
         else
         {
-            ObjectInteractionInfoCanva.gameObject.SetActive(false);
+            if(IsCanvaActiveInHierarchy)
+            {
+                ObjectInteractionInfoCanva.gameObject.SetActive(false);
+                DestroyCanvaObject();
+            }
         }
     }
 
     private void DisplayForNonRigidBodyObjects()
     {
-        if (CheckIfPlayerIsCloseToObject() && !DisableCanva)
-        {
-            ObjectInteractionInfoCanva.gameObject.SetActive(true);
-        }
-        else
-        {
-            ObjectInteractionInfoCanva.gameObject.SetActive(false);
-        }
+        bool CanvaStatus = (IsPuzzleSolved() && !DisableCanva);
+        ObjectInteractionInfoCanva.gameObject.SetActive(CanvaStatus);
     }
 
-    private bool CheckIfPlayerIsCloseToObject()
+    private bool IsPuzzleSolved()
     {
-        var PlayerPosition = (this.transform.position - Player.position).magnitude;
-        if (PlayerPosition < 2f)
-        {
-
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return PlayerPrefVariable == ExpectedPlayerPrefsValue;
     }
 
-    [System.Obsolete]
-    void Update()
+    private bool AreConflictingObjectsEnabled()
     {
-        foreach(Canvas c in DisablingCanvas)
+        foreach (GameObject go in ConflictingObjects)
         {
-            if(c.gameObject.active)
-            {
-                DisableCanva = true;
-                break;
-            }
-            else
-            {
-                DisableCanva = false;
-            }
+            if (go.activeInHierarchy) { return true; }
         }
+        return false;
+    }
 
-        if (IsComponentUsingRigidbody)
+    private void Update()
+    {
+        if (CollisionWithObject)
         {
-            DisplayForRigidBodyObjects();
-        }
-        else
-        {
+            PlayerPrefVariable = PlayerPrefs.GetInt(PlayerPrefsKey);
+            DisableCanva = AreConflictingObjectsEnabled();
             DisplayForNonRigidBodyObjects();
         }
-        
+
+        if(IsComponentUsingRigidbody)
+        {
+            float object_player_distance = (this.transform.position - Player.position).magnitude;
+            DisableCanva = !(object_player_distance < 2f);
+            DisplayForRigidBodyObjects();
+        }
+    }
+
+    private void CreateCanvaObject()
+    {
+        CollisionWithObject = true;
+        ObjectInteractionInfoCanva = Instantiate(ObjectInteractionInfoCanva).GetComponent<Canvas>();
+        Textbox = ObjectInteractionInfoCanva.gameObject.GetComponentInChildren<Text>();
+        Textbox.text = DisplayText;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player")){ CreateCanvaObject(); }
+    }
+
+    private void DestroyCanvaObject()
+    {
+        CollisionWithObject = false;
+        Destroy(ObjectInteractionInfoCanva.gameObject, 0.2f);
+        ObjectInteractionInfoCanva = ObjectInteractionInfoCanvaCopy;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player") { DestroyCanvaObject(); }
     }
 }

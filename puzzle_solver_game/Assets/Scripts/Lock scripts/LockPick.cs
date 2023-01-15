@@ -40,9 +40,9 @@ public class LockPick : MonoBehaviour
     }
     private bool hasPick()
     {
-        for (int i = 0; i < Inventory.Instance.itemList.Count; i++)
+        for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
         {
-            if (Inventory.Instance.itemList[i].itemName == "skeletonKey")
+            if (InventoryManager.Instance.itemList[i].itemName == "Wytrych")
             {
                 movePick = true;
             }

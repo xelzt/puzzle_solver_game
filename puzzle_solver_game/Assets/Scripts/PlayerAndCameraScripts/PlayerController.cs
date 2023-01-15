@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] GameObject mKeyMenu;
+    [SerializeField] GameObject tabKeyInventory;
     private float _speed = 5;
     private float _turnSpeed = 720;
     private float Fallmultiplier = 2.5f;
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour {
         Jump();
         Look();
         HandleAnimation();
-        mPressed();
+        HandleSpecialKeyInput();
     }
 
     private void FixedUpdate() {
@@ -35,14 +36,27 @@ public class PlayerController : MonoBehaviour {
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
-    private void mPressed()
-    {
+    private void HandleSpecialKeyInput()
+    {   
         if (Input.GetKeyDown(KeyCode.M))
         {
-            mKeyMenu.SetActive(true);
+            if (mKeyMenu.activeSelf == false)
+            {
+                mKeyMenu.SetActive(!mKeyMenu.activeSelf);
+            }
+            else mKeyMenu.SetActive(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (tabKeyInventory.activeSelf == false)
+            {
+                tabKeyInventory.SetActive(!tabKeyInventory.activeSelf);
+                InventoryManager.Instance.ListItem();
+            }
+            else tabKeyInventory.SetActive(false);
         }
     }
-        private void Look() 
+    private void Look() 
     {
         if (_input == Vector3.zero) return;
         var rot = Quaternion.LookRotation(_input.ToIso(), Vector3.up);
