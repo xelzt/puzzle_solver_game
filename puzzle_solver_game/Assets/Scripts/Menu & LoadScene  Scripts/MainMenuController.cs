@@ -15,14 +15,6 @@ public class MainMenuController : MonoBehaviour
         btn = secondLvlButton.GetComponent<Button>();
         btn.interactable = (PlayerPrefs.GetInt("Lvl_1_Passed") == 1 && !btn.interactable) ? true : false;
     }
-    public void openSelectLevel()
-    {
-        LoadGamePanel.SetActive(true);
-    }
-    public void closeSelectLevel()
-    {
-        LoadGamePanel.SetActive(false);
-    }
     public void Quit()
     {
         PlayerPrefs.DeleteAll();

@@ -34,7 +34,7 @@ public class UseItem : MonoBehaviour
     }
     void Use()
     {
-        if (Input.GetKeyDown(KeyCode.R) && inTriger && !gameObjRenderer.enabled)
+        if (Input.GetKeyDown(KeyCode.E) && inTriger && !gameObjRenderer.enabled)
         {
             for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
             {
