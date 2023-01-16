@@ -3200,6 +3200,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1256028444}
     m_Modifications:
+    - target: {fileID: 520138050558129587, guid: b262e49f8b27dd24b97672e078feba37, type: 3}
+      propertyPath: m_Text
+      value: Turn off
+      objectReference: {fileID: 0}
     - target: {fileID: 2224618825539923955, guid: b262e49f8b27dd24b97672e078feba37, type: 3}
       propertyPath: m_Name
       value: SimonCanvas
@@ -7059,7 +7063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158653669}
   m_LocalRotation: {x: -0, y: 0.99968976, z: -0, w: -0.024908297}
-  m_LocalPosition: {x: 27.07, y: -4.37, z: -64.11}
+  m_LocalPosition: {x: 34.43, y: -4.37, z: -86.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1627129646}
