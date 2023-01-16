@@ -24,18 +24,20 @@ public class LockElex : MonoBehaviour
     private string codeSequence;
     private List<string> symbols = new List<string>();
     public int maxTries = 1;
-    public Text text;
+    public Text tries;
+    public Text removedSymbols;
     private int[] numbers = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private string[] mathSymbols = new[] { "<", ">", "=" };
+    private bool removeNum;
 
     void Start()
     {
-        setNumbersDependsOnPlayerPrefs();
         GenerateRandomPassword();
-        displayTriesLeft();
-        ResetDisplay();
-        codeSequence = "";
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
+    }
+    private void OnEnable()
+    {
+        ResetDisplay();
     }
     void Update()
     {
@@ -44,9 +46,9 @@ public class LockElex : MonoBehaviour
             canvasPanel.SetActive(false);
         }
     }
-    private void displayTriesLeft()
+    private void DisplayTriesLeft()
     {
-        text.text = "Max tries left: " + maxTries;
+        tries.text = "Max tries left: " + maxTries;
     }
 
     private void AddDigitToCodeSequence(string digitEntered)
@@ -146,21 +148,20 @@ public class LockElex : MonoBehaviour
                 characters[4].sprite = characters[4].sprite;
                 characters[6].sprite = digits[digitJustEntered];
                 break;
-
         }
     }
-    private void dispayMathSymbols()
+    private void DispayMathSymbols()
     {
         int idx = 1;
         for (int i = 0; i < 3; i++)
         {
             if (symbols[i] == "=")
-                characters[idx].sprite = digits[12]; //do doprecyzowania symbol <
+                characters[idx].sprite = digits[12];
             else if (symbols[i] == ">")
-                characters[idx].sprite = digits[13]; //do doprecyzowania symbol =
+                characters[idx].sprite = digits[13];
             else
-                characters[idx].sprite = digits[14]; //do doprecyzowania symbol >
-            idx = idx + 2;
+                characters[idx].sprite = digits[14];
+            idx += 2;
         }
     }
 
@@ -168,7 +169,6 @@ public class LockElex : MonoBehaviour
     {
         if (codeSequence == codeToBreak)
         {
-            Debug.Log("Correct!");
             PlayerPrefs.SetInt("DidElexQuest", 1);
             PlayerPrefs.Save();
             shard_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);
@@ -177,9 +177,7 @@ public class LockElex : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wrong!");
-            maxTries = maxTries - 1;
-            displayTriesLeft();
+            maxTries--;
             ResetDisplay();
         }
     }
@@ -189,10 +187,10 @@ public class LockElex : MonoBehaviour
         if (maxTries == 0)
         {
             GenerateRandomPassword();
-            displayTriesLeft();
         }
+        DisplayTriesLeft();
         codeSequence = "";
-        for (int i = 0; i <= characters.Length - 1; i = i + 2)
+        for (int i = 0; i <= characters.Length - 1; i += 2)
         {
             if (i == 0)
             {
@@ -201,7 +199,7 @@ public class LockElex : MonoBehaviour
             else characters[i].sprite = digits[11];
         }
     }
-    public void generateSymbols()
+    public void GenerateSymbols()
     {
         symbols.Clear();
         for (int i = 0; i < 3; i++)
@@ -211,9 +209,11 @@ public class LockElex : MonoBehaviour
     }
     public void GenerateRandomPassword()
     {
-        generateSymbols();
-        dispayMathSymbols();
-        setMaxTriesDependsOnPlayerPrefs();
+        SetMaxTriesDependsOnPlayerPrefs();
+        SetNumbersDependsOnPlayerPrefs();
+        GenerateSymbols();
+        DispayMathSymbols();
+        DisplayTriesLeft();
         int x1 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         int x2 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         int x3 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
@@ -227,9 +227,8 @@ public class LockElex : MonoBehaviour
             x4 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         }
         codeToBreak = x1.ToString() + x2.ToString() + x3.ToString() + x4.ToString();
-        Debug.Log("codeToBreak: " + codeToBreak);
     }
-    private void setMaxTriesDependsOnPlayerPrefs()
+    private void SetMaxTriesDependsOnPlayerPrefs()
     {
         if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1)
         {
@@ -237,18 +236,24 @@ public class LockElex : MonoBehaviour
         }
         else maxTries = 1;
     }
-    private void setNumbersDependsOnPlayerPrefs()
+    private void SetNumbersDependsOnPlayerPrefs()
     {
-        if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1)
+        if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1 && !removeNum)
         {
             var random = new System.Random();
-            for (int i = 0; i < 2; i++)
+
+            List<int> numbersList = new List<int>(numbers);  
+            int num1 = random.Next(numbersList.Count);
+            int num2 = random.Next(numbersList.Count);
+            while (num1 == num2)
             {
-                List<int> numbersList = new List<int>(numbers);
-                int index1 = random.Next(numbersList.Count);
-                numbersList.RemoveAt(index1);
-                numbers = numbersList.ToArray();
+                num2 = random.Next(numbersList.Count);
             }
+            numbersList.Remove(num1);
+            numbersList.Remove(num2);
+            numbers = numbersList.ToArray();
+            removedSymbols.text = "Removed numbers: " + num1 + ", " + num2;
+            removeNum = true;
         }
     }
     private bool IsValidExpression(int x1, int x2, int x3, int x4, List<string> symbols)
