@@ -19,35 +19,38 @@ public class LockDigit : MonoBehaviour
 
     private string codeSequence;
 
-    void Start()
+    void OnEnable()
     {
-        hasHint();
+        HasHint();
         codeSequence ="";
         hintImage = codeHint.GetComponent<Image>();
         ResetDisplay();
-
+    }
+    private void Start()
+    {
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
+
     }
 
     void Update()
     {
-        escape();
-        hasHint();
+        Escape();
+        HasHint();
 
 
     }
-    private void escape()
+    private void Escape()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             canvasPanel.SetActive(false);
         }
     }
-    private void hasHint()
+    private void HasHint()
     {
         for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
         {
-            hintImage.enabled = true ? InventoryManager.Instance.itemList[i].itemName == "Wskazówka" : false;
+            hintImage.enabled = true && InventoryManager.Instance.itemList[i].itemName == "Wskazówka";
         }
     }
 
