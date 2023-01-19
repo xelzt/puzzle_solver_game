@@ -23,7 +23,6 @@ public class LockDigit : MonoBehaviour
     {
         HasHint();
         codeSequence ="";
-        hintImage = codeHint.GetComponent<Image>();
         ResetDisplay();
     }
     private void Start()
@@ -50,7 +49,12 @@ public class LockDigit : MonoBehaviour
     {
         for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
         {
-            hintImage.enabled = true && InventoryManager.Instance.itemList[i].itemName == "Wskazówka";
+            if(InventoryManager.Instance.itemList[i].itemName == "Wskazowka")
+            {
+                hintImage = codeHint.GetComponent<Image>();
+                hintImage.enabled = true;
+            }
+            
         }
     }
 

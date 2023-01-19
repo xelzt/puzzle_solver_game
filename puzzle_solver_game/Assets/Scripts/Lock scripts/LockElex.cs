@@ -38,6 +38,7 @@ public class LockElex : MonoBehaviour
     private void OnEnable()
     {
         ResetDisplay();
+        SetNumbersDependsOnPlayerPrefs();
     }
     void Update()
     {
