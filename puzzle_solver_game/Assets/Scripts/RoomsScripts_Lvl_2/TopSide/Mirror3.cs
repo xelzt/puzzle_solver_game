@@ -7,6 +7,7 @@ public class Mirror3 : MonoBehaviour
     bool Action;
     public static bool M3 = false;
     public GameObject Mir3;
+     public static bool Bloced =true;
 
    void OnTriggerEnter(Collider collision)
     {
@@ -26,10 +27,10 @@ public class Mirror3 : MonoBehaviour
        if (Input.GetKeyDown(KeyCode.E))
         {
             if (Action==true)
-            {
+            {if(Bloced==true){
                if(M3==true){M3=false;} else M3=true;
                Mir3.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);}
-            }
+            }}
         }
     }
 
