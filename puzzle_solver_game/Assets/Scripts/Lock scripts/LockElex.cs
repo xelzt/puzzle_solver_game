@@ -215,6 +215,7 @@ public class LockElex : MonoBehaviour
         GenerateSymbols();
         DispayMathSymbols();
         DisplayTriesLeft();
+
         int x1 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         int x2 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         int x3 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
@@ -245,15 +246,15 @@ public class LockElex : MonoBehaviour
 
             List<int> numbersList = new List<int>(numbers);  
             int num1 = random.Next(numbersList.Count);
-            int num2 = random.Next(numbersList.Count);
-            while (num1 == num2)
-            {
-                num2 = random.Next(numbersList.Count);
-            }
             numbersList.Remove(num1);
+            int num2 = random.Next(numbersList.Count);
             numbersList.Remove(num2);
+            int num3 = random.Next(numbersList.Count);
+            numbersList.Remove(num3);
+            int num4 = random.Next(numbersList.Count);
+            numbersList.Remove(num4);
             numbers = numbersList.ToArray();
-            removedSymbols.text = "Removed numbers: " + num1 + ", " + num2;
+            removedSymbols.text = "Removed numbers: " + num1 + ", " + num2 + ", " + num3 + ", " + num4;
             removeNum = true;
         }
     }

@@ -31,13 +31,16 @@ public class LockSimonSays : MonoBehaviour
     }
     private void OnEnable()
     {
-        buttonsclicked = 0;
-        colorOrderRunCount = -1;
-        level = 1;
-        generatePassword();
-        resetLEDs();
-        level = 1;
-        StartCoroutine(ColorOrder());
+        if (PlayerPrefs.GetInt("DidSimonSaysQuest") != 1)
+        {
+            buttonsclicked = 0;
+            colorOrderRunCount = -1;
+            level = 1;
+            generatePassword();
+            resetLEDs();
+            level = 1;
+            StartCoroutine(ColorOrder());
+        }
     }
     private void resetLEDs()
     {
