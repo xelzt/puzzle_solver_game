@@ -3267,6 +3267,12 @@ PrefabInstance:
       propertyPath: m_Text
       value: Turn off
       objectReference: {fileID: 0}
+    - target: {fileID: 1452479872490479879, guid: b262e49f8b27dd24b97672e078feba37, type: 3}
+      propertyPath: m_Text
+      value: 'DEBUGGER.exe
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 2224618825539923955, guid: b262e49f8b27dd24b97672e078feba37, type: 3}
       propertyPath: m_Name
       value: SimonCanvas
@@ -13480,7 +13486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9209148707537497270, guid: 5618dad32a3e3c64e90131ff3fc5d724, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9209148707537497270, guid: 5618dad32a3e3c64e90131ff3fc5d724, type: 3}
       propertyPath: m_AnchorMax.x
@@ -50587,7 +50593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6134119360738470476, guid: fe26e68c91d743e448ece9ad01f80323, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6134119360738470476, guid: fe26e68c91d743e448ece9ad01f80323, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88824,7 +88830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2925118195178602393, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2925118195178602393, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -88955,13 +88961,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1256028444}
     m_Modifications:
+    - target: {fileID: 592102571129855214, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -190.55994
+      objectReference: {fileID: 0}
     - target: {fileID: 592102571446610288, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
       propertyPath: m_Name
       value: LockElex
       objectReference: {fileID: 0}
+    - target: {fileID: 592102571446610288, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 592102571446610302, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 592102571446610302, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -89002,6 +89016,14 @@ PrefabInstance:
     - target: {fileID: 592102571446610302, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164273434463761033, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -190.55994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164273434463761033, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -87.2
       objectReference: {fileID: 0}
     - target: {fileID: 6164273434463761047, guid: 9a0f18f385ce81b46bbc07969048378e, type: 3}
       propertyPath: light_to_blink
