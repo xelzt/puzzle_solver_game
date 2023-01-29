@@ -54,7 +54,7 @@ public class LightsScript : MonoBehaviour
         }
 
         if (M1==true && Mirror1.M1==true){
-              //  await Task.Delay(1000);
+                await Task.Delay(1000);
                 Light2.GetComponent<Animation>().Play("Light2F");
                 M1=false;
                 M2=true;
@@ -62,7 +62,7 @@ public class LightsScript : MonoBehaviour
         }
 
         if (M2==true && Mirror2.M2==true){
-              //  await Task.Delay(1000);
+                await Task.Delay(1000);
                 Light3.GetComponent<Animation>().Play("Light3F");
                 M2=false;
                 M3=true;
@@ -71,7 +71,7 @@ public class LightsScript : MonoBehaviour
     
 
         if (M3==true && Mirror3.M3==true){
-               //  await Task.Delay(1000);
+                await Task.Delay(1000);
                 Light4.GetComponent<Animation>().Play("Light4F");
                 M3=false;
                 M4=true;
@@ -87,7 +87,7 @@ public class LightsScript : MonoBehaviour
 }
 
         if (M5==true && Mirror5.M5==true){
-               // await Task.Delay(1000);
+               await Task.Delay(1000);
                 Light6.GetComponent<Animation>().Play("Light6F");
                 M5=false;
                 M6=true;
@@ -95,7 +95,7 @@ public class LightsScript : MonoBehaviour
 }
 
         if (M6==true && Mirror6.M6==true){
-              //  await Task.Delay(1000);
+                await Task.Delay(1000);
                 Light7.GetComponent<Animation>().Play("Light7F");
                 M6=false;
                 M7=true;

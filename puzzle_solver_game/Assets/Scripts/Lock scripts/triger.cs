@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Triger : MonoBehaviour
+public class triger : MonoBehaviour
 {
     public GameObject canvasPanel;// Object to active
     private bool inTriger = false;
