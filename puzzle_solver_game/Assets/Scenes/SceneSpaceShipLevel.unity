@@ -5043,6 +5043,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3344563, y: 0.5, z: 1.7202888}
   m_Center: {x: 0.0000003576277, y: 0, z: -0.7451367}
+--- !u!114 &101022284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101022280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to place nexus
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  ConflictingObjects: []
+  PlayerPrefsKey: Nexus #2
+  ExpectedPlayerPrefsValue: 1
 --- !u!1 &101315375
 GameObject:
   m_ObjectHideFlags: 0
@@ -7181,7 +7198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158653669}
   m_LocalRotation: {x: -0, y: 0.99968976, z: -0, w: -0.024908297}
-  m_LocalPosition: {x: 36.17, y: -4.37, z: -90.9}
+  m_LocalPosition: {x: 37.4, y: -4.37, z: -66.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1627129646}
@@ -38333,8 +38350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AICanva: {fileID: 1421482196}
   DialogBoxInfoCanva: {fileID: 1991047249}
-  DisplayTextValue: It seems that there is some missing nexus in cabinets. Try to
-    find missing nexuses. Maybe that will power the links
+  DisplayTextValue: It seems that there are some missing nexuses in cabinets. Try
+    to find missing nexuses. Maybe that will power the links
 --- !u!65 &946609037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74850,6 +74867,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2438991, y: 0.5, z: 2.2539494}
   m_Center: {x: -0.029955909, y: 0, z: -1.011967}
+--- !u!114 &1825322309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825322302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7574ef0076b02f4aa03364dcd30c733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayText: Click "E" to place nexus
+  ObjectInteractionInfoCanva: {fileID: 2089856723}
+  ConflictingObjects: []
+  PlayerPrefsKey: Nexus #1
+  ExpectedPlayerPrefsValue: 1
 --- !u!1001 &1827693420
 PrefabInstance:
   m_ObjectHideFlags: 0
