@@ -229,6 +229,7 @@ public class LockElex : MonoBehaviour
             x4 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         }
         codeToBreak = x1.ToString() + x2.ToString() + x3.ToString() + x4.ToString();
+        Debug.Log(codeToBreak);
     }
     private void SetMaxTriesDependsOnPlayerPrefs()
     {
@@ -246,12 +247,25 @@ public class LockElex : MonoBehaviour
 
             List<int> numbersList = new List<int>(numbers);  
             int num1 = random.Next(numbersList.Count);
-            numbersList.Remove(num1);
             int num2 = random.Next(numbersList.Count);
-            numbersList.Remove(num2);
             int num3 = random.Next(numbersList.Count);
-            numbersList.Remove(num3);
             int num4 = random.Next(numbersList.Count);
+            while (num2 == num1)
+            {
+                num2 = random.Next(numbersList.Count);
+            }
+            while (num3 == num2 | num3 == num1)
+            {
+                num3 = random.Next(numbersList.Count);
+            }
+            while (num4 == num3 | num4 == num2 | num4 == num1)
+            {
+                num4 = random.Next(numbersList.Count);
+            }
+
+            numbersList.Remove(num1);
+            numbersList.Remove(num2);
+            numbersList.Remove(num3);
             numbersList.Remove(num4);
             numbers = numbersList.ToArray();
             removedSymbols.text = "Removed numbers: " + num1 + ", " + num2 + ", " + num3 + ", " + num4;
