@@ -7198,7 +7198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158653669}
   m_LocalRotation: {x: -0, y: 0.99968976, z: -0, w: -0.024908297}
-  m_LocalPosition: {x: -46.12, y: -4.37, z: -83.52}
+  m_LocalPosition: {x: 27.83, y: -4.37, z: -62.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1627129646}
@@ -88852,7 +88852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 762196608856390777, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2925118195178602393, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
       propertyPath: m_Pivot.x
@@ -88937,6 +88937,30 @@ PrefabInstance:
     - target: {fileID: 2925118195178602393, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395932416241388146, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395932416241388146, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395932416241388146, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395932416241388146, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395932416241388146, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395932416241388146, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b08583c83bd3ca54aa1cee4ea31696c2, type: 3}
