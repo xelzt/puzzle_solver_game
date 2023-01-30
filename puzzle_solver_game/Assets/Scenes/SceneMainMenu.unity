@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7d7907c9363d593428b6878cb083bb15, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2631,6 +2631,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondLvlButton: {fileID: 319820334}
+  secondLvlImage: {fileID: 981701773}
+  sprites:
+  - {fileID: 21300000, guid: 7d7907c9363d593428b6878cb083bb15, type: 3}
+  - {fileID: 21300000, guid: 1f365d80cf814f442bb7a4edfd3dbd9e, type: 3}
 --- !u!114 &1375287392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3433,7 +3437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5ef03fe07854fad46b3d71f54ca05425, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
