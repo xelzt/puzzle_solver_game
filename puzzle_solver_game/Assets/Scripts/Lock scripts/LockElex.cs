@@ -24,11 +24,11 @@ public class LockElex : MonoBehaviour
     private string codeSequence;
     private List<string> symbols = new List<string>();
     public int maxTries = 1;
-    public Text tries;
-    public Text removedSymbols;
+    public Text tries, removedSymbols, numbersInCode;
     private int[] numbers = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private string[] mathSymbols = new[] { "<", ">", "=" };
     private bool removeNum;
+    private int x1, x2, x3, x4;
 
     void Start()
     {
@@ -179,6 +179,21 @@ public class LockElex : MonoBehaviour
         else
         {
             maxTries--;
+            if (maxTries == 3)
+            {
+                numbersInCode.text = "Numbers in code sequence: " + x1;
+            }
+            else if (maxTries == 2)
+            {
+                if (x1 != x4)
+                {
+                    numbersInCode.text = "Numbers in code sequence: " + x1 + ", " + x4;
+                }
+                else
+                {
+                    numbersInCode.text = "Numbers in code sequence: " + x1 + ", " + x3;
+                }
+            }
             ResetDisplay();
         }
     }
@@ -215,11 +230,12 @@ public class LockElex : MonoBehaviour
         GenerateSymbols();
         DispayMathSymbols();
         DisplayTriesLeft();
+        numbersInCode.text = "Numbers in code sequence: ";
 
-        int x1 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
-        int x2 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
-        int x3 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
-        int x4 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
+         x1 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
+         x2 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
+         x3 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
+         x4 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
 
         while (!IsValidExpression(x1, x2, x3, x4, symbols))
         {
@@ -229,7 +245,6 @@ public class LockElex : MonoBehaviour
             x4 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
         }
         codeToBreak = x1.ToString() + x2.ToString() + x3.ToString() + x4.ToString();
-        Debug.Log(codeToBreak);
     }
     private void SetMaxTriesDependsOnPlayerPrefs()
     {
