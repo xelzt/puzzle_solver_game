@@ -16,7 +16,6 @@ public class Room7Script : MonoBehaviour
     void Update()
 {
     
-     Debug.Log(Array[0]+" "+Array[1]+" "+Array[2]+" "+Array[3]+" ");
     // Debug.Log("miejsca:"+ArrayPom[0]+" "+ArrayPom[1]+" "+ArrayPom[2]+" "+ArrayPom[3]+" ");
    // for (int i = 0; i < 4; i++)
            // {
