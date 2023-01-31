@@ -12170,7 +12170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 663, y: 60}
+  m_AnchoredPosition: {x: 616, y: 60}
   m_SizeDelta: {x: 600, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302133719
@@ -12194,8 +12194,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9f6e582f1c49a2841845862e1d42638a, type: 3}
-    m_FontSize: 28
+    m_Font: {fileID: 12800000, guid: 5948de85c14300b469b1bf1919ae4cb6, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -12205,9 +12205,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.2
-  m_Text: It seems that there are some missing nexuses in cabinets. Try to find missing
-    nexuses. Maybe that will power the links
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!222 &302133720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31833,7 +31832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237.1, y: 214.1}
+  m_AnchoredPosition: {x: 232, y: 214.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771223514
@@ -31857,7 +31856,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9f6e582f1c49a2841845862e1d42638a, type: 3}
+    m_Font: {fileID: 12800000, guid: ea6a32a8d3b42d54b934b15284371e40, type: 3}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -57379,7 +57378,7 @@ GameObject:
   - component: {fileID: 1421482195}
   - component: {fileID: 1421482194}
   m_Layer: 5
-  m_Name: AI Canva
+  m_Name: Dialog Box Canva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67339,7 +67338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -173.6, y: -18}
+  m_AnchoredPosition: {x: -170, y: -18}
   m_SizeDelta: {x: 332.6, y: 19.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1621908375
@@ -67363,7 +67362,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9f6e582f1c49a2841845862e1d42638a, type: 3}
+    m_Font: {fileID: 12800000, guid: ea6a32a8d3b42d54b934b15284371e40, type: 3}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
