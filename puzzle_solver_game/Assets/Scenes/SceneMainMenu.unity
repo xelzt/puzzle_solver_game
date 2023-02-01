@@ -275,8 +275,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.26902, y: 0}
-  m_SizeDelta: {x: 179.94, y: 30}
+  m_AnchoredPosition: {x: -25.7, y: 0}
+  m_SizeDelta: {x: 183.698, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &193243795
 MonoBehaviour:
@@ -544,7 +544,6 @@ GameObject:
   - component: {fileID: 319820338}
   - component: {fileID: 319820337}
   - component: {fileID: 319820336}
-  - component: {fileID: 319820339}
   m_Layer: 5
   m_Name: SecondLvlSelectButton
   m_TagString: Untagged
@@ -616,16 +615,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319820339}
-        m_TargetAssemblyTypeName: changeScene, Assembly-CSharp
-        m_MethodName: loadLvl
-        m_Mode: 1
+      - m_Target: {fileID: 1281934257}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SceneSpaceShipLevel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &319820337
@@ -666,19 +665,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319820334}
   m_CullTransparentMesh: 1
---- !u!114 &319820339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319820334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 151952d8d184c86458d7aa841bd29bcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: SceneSpaceShipLevel
 --- !u!1 &418544764
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +835,6 @@ GameObject:
   - component: {fileID: 521501569}
   - component: {fileID: 521501568}
   - component: {fileID: 521501567}
-  - component: {fileID: 521501570}
   m_Layer: 5
   m_Name: FirstLvlSelectButton
   m_TagString: Untagged
@@ -921,16 +906,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 521501570}
-        m_TargetAssemblyTypeName: changeScene, Assembly-CSharp
-        m_MethodName: loadLvl
-        m_Mode: 1
+      - m_Target: {fileID: 1281934257}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SceneDungeonLevel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &521501568
@@ -971,19 +956,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521501565}
   m_CullTransparentMesh: 1
---- !u!114 &521501570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 521501565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 151952d8d184c86458d7aa841bd29bcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: SceneDungeonLevel
 --- !u!1 &670236865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,6 +2178,7 @@ GameObject:
   - component: {fileID: 1281934256}
   - component: {fileID: 1281934255}
   - component: {fileID: 1281934254}
+  - component: {fileID: 1281934257}
   m_Layer: 5
   m_Name: LevelSelectScenes
   m_TagString: Untagged
@@ -2302,6 +2275,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1281934257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281934252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f8a758818e3154fb328c7b4df04c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 1934734277}
+  transitionTime: 1
 --- !u!1 &1334410536
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,6 +3367,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+--- !u!95 &1934734277 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 495587105508572828, guid: 369f2d6690e0ca845a37f6e0cc8cb331, type: 3}
+  m_PrefabInstance: {fileID: 1934734276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1937539793
 GameObject:
   m_ObjectHideFlags: 0

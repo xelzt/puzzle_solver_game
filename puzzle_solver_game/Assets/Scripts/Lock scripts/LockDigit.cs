@@ -28,15 +28,11 @@ public class LockDigit : MonoBehaviour
     private void Start()
     {
         PushTheButton.ButtonPressed += AddDigitToCodeSequence;
-
     }
 
     void Update()
     {
         Escape();
-        HasHint();
-
-
     }
     private void Escape()
     {
@@ -47,17 +43,15 @@ public class LockDigit : MonoBehaviour
     }
     private void HasHint()
     {
-        for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
+        foreach (var invItem in InventoryManager.Instance.itemList)
         {
-            if(InventoryManager.Instance.itemList[i].itemName == "Wskazowka")
+            if(invItem.itemName == "Wskazowka")
             {
                 hintImage = codeHint.GetComponent<Image>();
                 hintImage.enabled = true;
             }
-            
         }
     }
-
     private void AddDigitToCodeSequence(string digitEntered)
     {
         if (codeSequence.Length < 4)
@@ -152,7 +146,6 @@ public class LockDigit : MonoBehaviour
                 characters[2].sprite = characters[3].sprite;
                 characters[3].sprite = digits[digitJustEntered];
                 break;
-            
         }
     }
 
@@ -177,10 +170,5 @@ public class LockDigit : MonoBehaviour
         {
             characters[i].sprite = digits[10];
         }
-    }
-
-    private void OnDestroy()
-    {
-        PushTheButton.ButtonPressed -= AddDigitToCodeSequence;
     }
 }

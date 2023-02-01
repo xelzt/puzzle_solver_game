@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] GameObject mKeyMenu;
     [SerializeField] GameObject tabKeyInventory;
-    private float _speed = 5;
-    private float _turnSpeed = 720;
-    private float Fallmultiplier = 2.5f;
-    private Vector3 _input;
+    private readonly float Speed = 5;
+    private readonly float TurnSpeed = 720;
+    private readonly float Fallmultiplier = 2.5f;
+    private Vector3 input;
     private Animator animator;
     private bool onTheGround = false;
 
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 
     private void GatherInput() 
     {
-        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
     private void HandleSpecialKeyInput()
@@ -58,14 +58,14 @@ public class PlayerController : MonoBehaviour {
     }
     private void Look() 
     {
-        if (_input == Vector3.zero) return;
-        var rot = Quaternion.LookRotation(_input.ToIso(), Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
+        if (input == Vector3.zero) return;
+        var rot = Quaternion.LookRotation(input.ToIso(), Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, TurnSpeed * Time.deltaTime);
     }
 
     private void Move() 
     {
-        _rb.MovePosition(transform.position + transform.forward * _input.normalized.magnitude * _speed * Time.deltaTime);
+        _rb.MovePosition(transform.position + input.normalized.magnitude * Speed * Time.deltaTime * transform.forward);
     }
 
     private void Jump()
@@ -81,11 +81,11 @@ public class PlayerController : MonoBehaviour {
     {
         if (_rb.velocity.y < 0)
         {
-            _rb.velocity += Vector3.up * Physics.gravity.y * Fallmultiplier * Time.deltaTime;
+            _rb.velocity += Fallmultiplier * Physics.gravity.y * Time.deltaTime * Vector3.up;
         }
     }
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ground"))
         {
             onTheGround = true;
         }
@@ -105,13 +105,13 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("Jump", false);
         }
 
-        if(_input != Vector3.zero && onTheGround == true)
+        if(input != Vector3.zero && onTheGround == true)
         {
             animator.SetBool("Move", true); 
             animator.SetBool("Idle", false);
         }
         
-        if(_input == Vector3.zero && onTheGround == true)
+        if(input == Vector3.zero && onTheGround == true)
         {
             animator.SetBool("Move", false);
             animator.SetBool("Idle", true);

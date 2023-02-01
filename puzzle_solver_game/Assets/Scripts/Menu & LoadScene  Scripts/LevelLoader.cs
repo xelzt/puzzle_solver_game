@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
-    public float transitionTime = 1f;
+    public float transitionTime = 2f;
     public static LevelLoader Instance;
     private void Awake()
     {
@@ -14,10 +14,10 @@ public class LevelLoader : MonoBehaviour
     }
     public void ChangeScene(string sceneName)
     {
-        StartCoroutine(loadLevel(sceneName));
+        StartCoroutine(LoadLevel(sceneName));
     }
 
-    IEnumerator loadLevel(string levelName)
+    IEnumerator LoadLevel(string levelName)
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class setActiveElement : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject gameObj;// Object to active/hide
-    public GameObject gameObj2;// Object to active/hide
-    public GameObject gameObj3;// Object to active/hide
+    public GameObject gameObj;// Object to hide
+    public GameObject gameObj2;// Object to hide
+    public GameObject gameObj3;// Object to collect
     private bool checkCondition = true;
 
     void Update()

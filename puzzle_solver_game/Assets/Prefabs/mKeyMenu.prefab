@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 5960169612596784072}
   - component: {fileID: 5960169612596784073}
   - component: {fileID: 5960169612596784074}
-  - component: {fileID: 5960169612596784075}
+  - component: {fileID: 8219506050191307350}
   m_Layer: 5
   m_Name: BackToMenuButton
   m_TagString: Untagged
@@ -562,19 +562,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5960169612596784075}
-        m_TargetAssemblyTypeName: changeScene, Assembly-CSharp
-        m_MethodName: loadLvl
-        m_Mode: 1
+      - m_Target: {fileID: 8219506050191307350}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SceneMainMenu
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5960169612596784075
+--- !u!114 &8219506050191307350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -583,10 +583,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5960169612596784077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 151952d8d184c86458d7aa841bd29bcb, type: 3}
+  m_Script: {fileID: 11500000, guid: 68f8a758818e3154fb328c7b4df04c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SceneMainMenu
+  transition: {fileID: 5960169612515876781}
+  transitionTime: 2
 --- !u!1 &5960169612809506191
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +850,7 @@ GameObject:
   - component: {fileID: 5960169613543831437}
   - component: {fileID: 5960169613543831438}
   - component: {fileID: 5960169613543831439}
+  - component: {fileID: 4597633775629198659}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -976,6 +978,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4597633775629198659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960169613543831473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f8a758818e3154fb328c7b4df04c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  transitionTime: 2
 --- !u!1 &5960169613773869063
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,9 +16,9 @@ public class InventoryManager : MonoBehaviour
     }
     private void Update()
     {
-        escape();
+        Escape();
     }
-    private void escape()
+    private void Escape()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
