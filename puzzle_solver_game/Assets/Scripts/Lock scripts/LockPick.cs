@@ -9,9 +9,9 @@ public class LockPick : MonoBehaviour
     public Camera cam;
     public Transform innerLock;
     public Transform pickPosition;
-    private float maxAngle = 90;
-    private float lockSpeed = 10;
-    private float lockRange = 10;
+    private readonly float maxAngle = 90;
+    private readonly float lockSpeed = 10;
+    private readonly float lockRange = 10;
     private float eulerAngle;
     private float unlockAngle;
     private Vector2 unlockRange;
@@ -21,28 +21,28 @@ public class LockPick : MonoBehaviour
 
     void Start()
     {
-        newLock();
+        NewLock();
     }
     void Update()
     {
-        if (hasPick())
+        if (HasPick())
         {
-            checkResult();
+            CheckResult();
         }
-        escape();
+        Escape();
     }
-    private void escape()
+    private void Escape()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             canvasPanel.SetActive(false);
         }
     }
-    private bool hasPick()
+    private bool HasPick()
     {
-        for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
+        foreach  (var invItem in InventoryManager.Instance.itemList)
         {
-            if (InventoryManager.Instance.itemList[i].itemName == "Wytrych")
+            if (invItem.itemName == "Wytrych")
             {
                 movePick = true;
             }
@@ -50,7 +50,7 @@ public class LockPick : MonoBehaviour
         }
         return movePick;
     }
-    private void checkResult()
+    private void CheckResult()
     {
         transform.localPosition = pickPosition.position;
         if (movePick)
@@ -100,7 +100,7 @@ public class LockPick : MonoBehaviour
             }
         }
     }
-    void newLock()
+    void NewLock()
     {
         unlockAngle = Random.Range(-maxAngle + lockRange, maxAngle - lockRange);
         unlockRange = new Vector2(unlockAngle - lockRange, unlockAngle + lockRange);

@@ -9,7 +9,7 @@ public class CollectItem : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             inTriger = true;
         }

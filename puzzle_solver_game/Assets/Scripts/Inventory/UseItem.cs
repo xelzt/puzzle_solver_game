@@ -12,14 +12,14 @@ public class UseItem : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             inTriger = true;
         }
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             inTriger = false;
         }
@@ -36,9 +36,9 @@ public class UseItem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && inTriger && !gameObjRenderer.enabled)
         {
-            for (int i = 0; i < InventoryManager.Instance.itemList.Count; i++)
+            foreach (var invItem in InventoryManager.Instance.itemList)
             {
-                if (InventoryManager.Instance.itemList[i].itemName == item.itemName)
+                if (invItem.itemName == item.itemName)
                 {
                     InventoryManager.Instance.RemoveItem(item);
                     gameObjCollider.enabled = true;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PortalActive : MonoBehaviour
+public class PortalActivatorLvl2 : MonoBehaviour
 {
     public GameObject portal;
     public GameObject shard1;
@@ -14,7 +14,7 @@ public class PortalActive : MonoBehaviour
 
     void Update()
     {
-        checkShardColor();
+        CheckShardColor();
         if (inTriger)
         {
             PlayerPrefs.SetInt("Lvl_2_Passed", 1);
@@ -23,7 +23,7 @@ public class PortalActive : MonoBehaviour
         }
     }
 
-    private void checkShardColor()
+    private void CheckShardColor()
     {
         if (shard1.GetComponent<ColorChanger>().colorChanged == true &&
             shard2.GetComponent<ColorChanger>().colorChanged == true &&
@@ -36,7 +36,7 @@ public class PortalActive : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             inTriger = true;
         }

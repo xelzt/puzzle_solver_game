@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class PortalActivator : MonoBehaviour
+public class PortalActivatorLvl1 : MonoBehaviour
 {
     public Collider gameObjCollider;
     public Renderer gameObjRenderer;
@@ -38,7 +38,7 @@ public class PortalActivator : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             inTriger = true;
         }

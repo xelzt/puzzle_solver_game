@@ -230,7 +230,7 @@ public class LockElex : MonoBehaviour
         GenerateSymbols();
         DispayMathSymbols();
         DisplayTriesLeft();
-        numbersInCode.text = "Numbers in code sequence: ";
+        numbersInCode.text = "Numbers in code sequence: X";
 
          x1 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
          x2 = numbers[UnityEngine.Random.Range(0, numbers.Length)];
@@ -318,9 +318,5 @@ public class LockElex : MonoBehaviour
             return true;
         else
             return false;
-    }
-    private void OnDestroy()
-    {
-        PushTheButton.ButtonPressed -= AddDigitToCodeSequence;
     }
 }
