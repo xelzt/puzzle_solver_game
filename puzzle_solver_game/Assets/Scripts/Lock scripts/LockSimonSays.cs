@@ -36,29 +36,30 @@ public class LockSimonSays : MonoBehaviour
             buttonsclicked = 0;
             colorOrderRunCount = -1;
             level = 1;
-            generatePassword();
-            resetLEDs();
-            level = 1;
+            GeneratePassword();
+            ResetLEDs();
             StartCoroutine(ColorOrder());
         }
     }
-    private void resetLEDs()
+    private void ResetLEDs()
     {
         for (int i = 0; i < rowLights.Length; i++)
         {
             rowLights[i].GetComponent<Image>().color = white;
         }
     }
-    private void generatePassword()
+    private void GeneratePassword()
     {
         for (int i = 0; i < lightOrder.Length; i++)
         {
 
-            lightOrder[i] = (UnityEngine.Random.Range(0, 8));
+            lightOrder[i] = (UnityEngine.Random.Range(0, 9));
         }
     }
     public void ButtonClickOrder(int button)
     {
+        if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1) return;
+
         buttonsclicked++;
         if (button == lightOrder[buttonsclicked - 1])
         {
@@ -67,7 +68,7 @@ public class LockSimonSays : MonoBehaviour
         else
         {
             passed = false;
-            StartCoroutine(ColorBlink(red));
+            StartCoroutine(ColorBlink());
         }
         if (buttonsclicked == level && passed == true && buttonsclicked != 5)
         {
@@ -79,32 +80,22 @@ public class LockSimonSays : MonoBehaviour
         {
             PlayerPrefs.SetInt("DidSimonSaysQuest", 1);
             PlayerPrefs.Save();
-            StartCoroutine(ColorBlink(green));
-            resetLEDs();
             simonSaysGamePanel.SetActive(false);
         }
     }
-    IEnumerator ColorBlink(Color32 colorToBlink)
+    IEnumerator ColorBlink()
     {
         DisableInteractableButtons();
         for (int j = 0; j < 3; j++)
         {
             for (int i = 0; i < lightArray.Length; i++)
             {
-                lightArray[i].GetComponent<Image>().color = colorToBlink;
-            }
-            for (int i = 5; i < rowLights.Length; i++)
-            {
-                rowLights[i].GetComponent<Image>().color = colorToBlink;
+                lightArray[i].GetComponent<Image>().color = red;
             }
             yield return new WaitForSeconds(lightspeed);
             for (int i = 0; i < lightArray.Length; i++)
             {
                 lightArray[i].GetComponent<Image>().color = black;
-            }
-            for (int i = 5; i < rowLights.Length; i++)
-            {
-                rowLights[i].GetComponent<Image>().color = white;
             }
             yield return new WaitForSeconds(lightspeed);
         }
@@ -120,7 +111,6 @@ public class LockSimonSays : MonoBehaviour
         {
             if (level >= colorOrderRunCount)
             {
-                lightArray[lightOrder[i]].GetComponent<Image>().color = invisible;
                 yield return new WaitForSeconds(lightspeed);
                 lightArray[lightOrder[i]].GetComponent<Image>().color = green;
                 yield return new WaitForSeconds(lightspeed);
