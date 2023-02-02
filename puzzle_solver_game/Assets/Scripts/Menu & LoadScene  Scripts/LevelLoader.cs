@@ -24,7 +24,7 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelName);
     }
-    public void Quit()
+    public void QuitGame()
     {
         PlayerPrefs.DeleteAll();
         Application.Quit();
