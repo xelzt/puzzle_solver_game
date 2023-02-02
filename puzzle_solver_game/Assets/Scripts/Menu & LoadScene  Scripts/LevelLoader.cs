@@ -8,6 +8,7 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 2f;
     public static LevelLoader Instance;
+    private MainMenuController menuController;
     private void Awake()
     {
         Instance = this;
