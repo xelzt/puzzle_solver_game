@@ -12,11 +12,13 @@ public class Plot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         plot_text = PlotObj.GetComponentInChildren<Text>();
         plot_text.color = new Color(plot_text.color.r, plot_text.color.g, plot_text.color.b, 0);
         PlotObj.gameObject.SetActive(true);
-        plot_lines.Add("Finally!");
+        plot_lines.Add("After the battle you fought you were trying to escape from danger...");
+        plot_lines.Add("Unfortunately it is not so easy to escape from the void...");
+        plot_lines.Add("You thought you would back home safe, didn't you...?");
+        plot_lines.Add("But the journey is just beginning...");
         StartCoroutine(DisplayLine());
     }
 
