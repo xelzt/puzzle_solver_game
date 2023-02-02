@@ -58,8 +58,6 @@ public class LockSimonSays : MonoBehaviour
     }
     public void ButtonClickOrder(int button)
     {
-        if (PlayerPrefs.GetInt("DidSimonSaysQuest") == 1) return;
-
         buttonsclicked++;
         if (button == lightOrder[buttonsclicked - 1])
         {
@@ -80,6 +78,7 @@ public class LockSimonSays : MonoBehaviour
         {
             PlayerPrefs.SetInt("DidSimonSaysQuest", 1);
             PlayerPrefs.Save();
+            DisableInteractableButtons();
             simonSaysGamePanel.SetActive(false);
         }
     }
