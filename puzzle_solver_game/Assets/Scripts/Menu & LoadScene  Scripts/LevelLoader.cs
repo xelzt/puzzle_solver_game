@@ -8,6 +8,7 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 2f;
     public static LevelLoader Instance;
+    private MainMenuController menuController;
     private void Awake()
     {
         Instance = this;
@@ -22,5 +23,10 @@ public class LevelLoader : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelName);
+    }
+    public void Quit()
+    {
+        PlayerPrefs.DeleteAll();
+        Application.Quit();
     }
 }
