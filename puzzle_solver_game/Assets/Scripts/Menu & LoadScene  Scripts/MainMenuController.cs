@@ -19,9 +19,4 @@ public class MainMenuController : MonoBehaviour
             secondLvlImage.sprite = sprites[1];
         } else secondLvlImage.sprite = sprites[0];
     }
-    public void Quit()
-    {
-        PlayerPrefs.DeleteAll();
-        Application.Quit();
-    }
 }
