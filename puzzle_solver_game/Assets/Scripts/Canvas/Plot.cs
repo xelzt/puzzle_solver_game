@@ -30,7 +30,7 @@ public class Plot : MonoBehaviour
             StartCoroutine(FadeTextIn());
             yield return new WaitForSeconds(5);
             StartCoroutine(FadeTextOut());
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(3);
         }
 
         var cg = this.GetComponent<CanvasGroup>();
@@ -44,7 +44,7 @@ public class Plot : MonoBehaviour
     {
         while(plot_text.color.a < 1)
         {
-            plot_text.color = new Color(plot_text.color.r, plot_text.color.g, plot_text.color.b, plot_text.color.a + (1f * Time.deltaTime)/3);
+            plot_text.color = new Color(plot_text.color.r, plot_text.color.g, plot_text.color.b, plot_text.color.a + (1f * Time.deltaTime)/2);
             yield return null;
         }
     }
@@ -52,7 +52,7 @@ public class Plot : MonoBehaviour
     {
         while (plot_text.color.a > 0)
         {
-            plot_text.color = new Color(plot_text.color.r, plot_text.color.g, plot_text.color.b, plot_text.color.a - (1f * Time.deltaTime)/3);
+            plot_text.color = new Color(plot_text.color.r, plot_text.color.g, plot_text.color.b, plot_text.color.a - (1f * Time.deltaTime)/2);
             yield return null;
         }
     }
