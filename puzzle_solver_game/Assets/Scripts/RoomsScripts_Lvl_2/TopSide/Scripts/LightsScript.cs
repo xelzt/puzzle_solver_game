@@ -30,7 +30,7 @@ public class LightsScript : MonoBehaviour
 
       void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             Action = true;
         }
@@ -54,64 +54,67 @@ public class LightsScript : MonoBehaviour
         }
 
         if (M1==true && Mirror1.M1==true){
-                await Task.Delay(1000);
-                Light2.GetComponent<Animation>().Play("Light2F");
-                M1=false;
-                M2=true;
-                Mirror1.Bloced=false;
+            M1 = false;
+            Mirror1.Bloced = false;
+            await Task.Delay(1000);
+            Light2.GetComponent<Animation>().Play("Light2F");
+            M2 = true;
+
         }
 
         if (M2==true && Mirror2.M2==true){
-                await Task.Delay(1000);
-                Light3.GetComponent<Animation>().Play("Light3F");
-                M2=false;
-                M3=true;
-                                Mirror2.Bloced=false;
-}
-    
+            M2 = false;
+            Mirror2.Bloced = false;
+            await Task.Delay(1000);
+            Light3.GetComponent<Animation>().Play("Light3F");
+            M3 = true;
+
+        }
+
 
         if (M3==true && Mirror3.M3==true){
-                await Task.Delay(1000);
-                Light4.GetComponent<Animation>().Play("Light4F");
-                M3=false;
-                M4=true;
-                                Mirror3.Bloced=false;
-}
+            M3 = false;
+            Mirror3.Bloced = false;
+            await Task.Delay(1000);
+            Light4.GetComponent<Animation>().Play("Light4F");
+            M4 = true;
+
+        }
 
         if (M4==true && Mirror4.M4==true){
-                await Task.Delay(1000);
-                Light5.GetComponent<Animation>().Play("Light5F");
-                M4=false;
-                M5=true;
-                                Mirror4.Bloced=false;
-}
+            M4 = false;
+            Mirror4.Bloced = false;
+            await Task.Delay(1000);
+            Light5.GetComponent<Animation>().Play("Light5F");
+            M5 = true;
+        }
 
         if (M5==true && Mirror5.M5==true){
-               await Task.Delay(1000);
-                Light6.GetComponent<Animation>().Play("Light6F");
-                M5=false;
-                M6=true;
-                                Mirror5.Bloced=false;
-}
+            M5 = false;
+            Mirror5.Bloced = false;
+            await Task.Delay(1000);
+            Light6.GetComponent<Animation>().Play("Light6F");
+            M6 = true;
+        }
 
         if (M6==true && Mirror6.M6==true){
-                await Task.Delay(1000);
-                Light7.GetComponent<Animation>().Play("Light7F");
-                M6=false;
-                M7=true;
-                                Mirror6.Bloced=false;
-}
+            M6 = false;
+            Mirror6.Bloced = false;
+            await Task.Delay(1000);
+            Light7.GetComponent<Animation>().Play("Light7F");
+            M7 = true;
+        }
 
         if (M7==true && Mirror7.M7==true){
              M7=false;
-                             Mirror7.Bloced=false;
-                await Task.Delay(1000);
-                Light8.GetComponent<Animation>().Play("Light8F");
-                await Task.Delay(1000);
-                Light9.GetComponent<Animation>().Play("Light9F");
-                shard_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);}
-                
-              }
+             Mirror7.Bloced=false;
+             await Task.Delay(1000);
+             Light8.GetComponent<Animation>().Play("Light8F");
+             await Task.Delay(1000);
+             Light9.GetComponent<Animation>().Play("Light9F");
+             shard_to_blink.GetComponent<ColorChanger>().ChangeShardColour(Color.green);
+        }
+}
 }
            
             
